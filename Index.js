@@ -33,8 +33,7 @@ app.get('/songs', (req,res) => {
 app.get('/songs/:id', (req,res) => {
     let sql = `SELECT * FROM songs WHERE id = ${req.params.id}`;
     let query = db.query(sql, (err,result) => {
-        if(err) throw err;
-        console.log(result);
+        if(err) return res.status(400).send(err.message);
         res.send(result);
     }); 
 });
@@ -167,7 +166,7 @@ app.put('/songs/:id' , (req,res) =>{
                 return res.status(400).send(err.message);
             }
         }else{
-            return res.status(204).json(body);
+            return res.status(204).end();
         }
     })
 })
@@ -183,7 +182,7 @@ app.put('/artist/:id' , (req,res) => {
     };
     db.query(sql,newArtist,(err,result) => {
         if(err) throw err;
-        return res.status(204).json(body);
+        return res.status(204).end();
     })
 });
 
@@ -199,7 +198,7 @@ app.put('/albums/:id' , (req,res) => {
     };
     db.query(sql,newAlbum,(err,result) => {
         if(err) throw err;
-        return res.status(204).json(body);
+        return res.status(204).end();
     })
 });
 
@@ -212,11 +211,12 @@ app.put('/playlist/:id' , (req,res) => {
         "cover_img": body.cover_img,
         "created_at": body.created_at
     };
-    db.query(sql,newArtist,(err,result) => {
+    db.query(sql,newPlaylist,(err,result) => {
         if(err) throw err;
-        return res.status(204).json(body);
+        return res.status(204).end();
     })
 });
+
 
 
 
