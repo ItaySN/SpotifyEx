@@ -16,7 +16,7 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
     if(err){
-        throw err;
+        if(err) return res.status(400).send(err.message);
     }
     console.log('Connected to DB');
 })
@@ -24,8 +24,7 @@ db.connect((err) => {
 app.get('/songs', (req,res) => {
     let sql = `SELECT * FROM songs`;
     let query = db.query(sql,(err,result) => {
-        if(err) throw err;
-        console.log(result);
+        if(err) return res.status(400).send(err.message);
         res.send(result);
     });
 });
@@ -41,8 +40,7 @@ app.get('/songs/:id', (req,res) => {
 app.get('/artists/:id', (req,res) => {
     let sql = `SELECT * FROM artists WHERE id = ${req.params.id}`;
     let query = db.query(sql, (err,result) => {
-        if(err) throw err;
-        console.log(result);
+       if(err) return res.status(400).send(err.message);
         res.send(result);
     }); 
 });
@@ -50,8 +48,7 @@ app.get('/artists/:id', (req,res) => {
 app.get('/albums/:id', (req,res) => {
     let sql = `SELECT * FROM albums WHERE id = ${req.params.id}`;
     let query = db.query(sql, (err,result) => {
-        if(err) throw err;
-        console.log(result);
+       if(err) return res.status(400).send(err.message);
         res.send(result);
     }); 
 });
@@ -59,8 +56,7 @@ app.get('/albums/:id', (req,res) => {
 app.get('/playlists/:id', (req,res) => {
     let sql = `SELECT * FROM playlists WHERE id = ${req.params.id}`;
     let query = db.query(sql, (err,result) => {
-        if(err) throw err;
-        console.log(result);
+       if(err) return res.status(400).send(err.message);
         res.send(result);
     }); 
 });
@@ -75,9 +71,8 @@ app.post('/playlist' , (req,res) => {
         "created_at": body.created_at 
     };
     db.query(sql,newPlaylist,(err,result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send(result);
+        if(err) return res.status(400).send(err.message);
+        return res.status(201).json(body);
     })
 });
 
@@ -92,9 +87,8 @@ app.post('/album' , (req,res) => {
         "created_at": body.created_at 
     };
     db.query(sql,newAlbum,(err,result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send(result);
+        if(err) return res.status(400).send(err.message);
+         return res.status(201).json(body);
     })
 });
 
@@ -108,9 +102,8 @@ app.post('/artist' , (req,res) => {
         "upload_at": body.upload_at
     };
     db.query(sql,newArtist,(err,result) => {
-        if(err) throw err;
-        console.log(result);
-        res.send(result);
+        if(err) return res.status(400).send(err.message);
+         return res.status(201).json(body);
     })
 });
 
@@ -216,6 +209,68 @@ app.put('/playlist/:id' , (req,res) => {
         return res.status(204).end();
     })
 });
+
+app.delete('/albums/:id' , (req,res) => {
+    let body = req.body;
+    let sql = `DELETE FROM albums WHERE id = ${req.params.id}`;
+    db.query(sql,(err,result) => {
+        if(err){
+            if(err.errno===1452){
+                return res.status(404).send("an invalid artist or album id's has been submited")
+            }
+            else{
+                return res.status(400).send(err.message);
+            }
+        }
+        else{
+            return res.status(204).end();
+        }
+    })
+})
+
+app.delete('/artists/:id' , (req,res) => {
+    let body = req.body;
+    let sql = `DELETE FROM artists WHERE id = ${req.params.id}`;
+    db.query(sql,(err,result) => {
+        if(err){
+            if(err.errno===1452){
+                return res.status(404).send("an invalid artist or album id's has been submited")
+            }
+            else{
+                return res.status(400).send(err.message);
+            }
+        }
+        else{
+            return res.status(204).end();
+        }
+    });
+})
+
+app.delete('/playlists/:id' , (req,res) => {
+    let body = req.body;
+    let sql = `DELETE FROM playlists WHERE id = ${req.params.id}`;
+    db.query(sql,(err,result) => {
+        if(err){
+            return res.status(400).send(err.message);
+        }
+        else{
+            return res.status(204).end();
+        }
+    });
+})
+
+app.delete('/songs/:id' , (req,res) => {
+    let body = req.body;
+    let sql = `DELETE FROM songs WHERE id = ${req.params.id}`;
+    db.query(sql,(err,result) => {
+        if(err){
+            return res.status(400).send(err.message);
+        }
+        else{
+            return res.status(204).end();
+        }
+    });
+})
 
 
 
