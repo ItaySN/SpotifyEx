@@ -1,10 +1,15 @@
 const express = require('express');
+const cors = require('cors')
+
 const mysql = require('mysql');
 require('dotenv').config();
 
 const app = express();
-express.json();
-app.use(express.json());
+;
+app.use(express.json()); 
+app.use(cors())
+
+
 
 
 const db = mysql.createConnection({
@@ -124,6 +129,7 @@ app.post('/song', (req,res) =>{
     db.query(sql,newSong,(err,result) => {
         if(err)
         {
+            console.log(err.message);
             if(err.errno === 1452){
                 res.status(404).send("an invalid artist or album id's has been submited");
             }else{
@@ -276,6 +282,6 @@ app.delete('/songs/:id' , (req,res) => {
 
 
 
-app.listen('3000', ()=> {
-    console.log("Listening to port 3000...")
+app.listen(8080, ()=> {
+    console.log("Listening to port 8080...")
 } )
