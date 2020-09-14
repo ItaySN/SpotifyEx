@@ -3,15 +3,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Song from './Song.js';
 import Header from './Header.js';
-// import './songs.css'
+import './TopSongs.css'
 
-function Songs(props){
-    const [songs,setSongs] = useState([]);
+function TopSongs(){
+    const [topSongs,setTopSongs] = useState([]);
 
     const getAllSongs = async () => {
     try {
-      const res = await axios.get('/songs');
-      setSongs(res.data);
+      const res = await axios.get('/top_songs');
+      setTopSongs(res.data);
       console.log(res.data);
     }catch (err) {
       console.error(err.message);
@@ -28,8 +28,9 @@ function Songs(props){
     return(
         <>
         <Header/>
-        <div>  
-            {songs.map((song) =>{
+        <div className="topSongsDiv">
+            <h1>Top Songs</h1>  
+            {topSongs.map((song) =>{
                 return <Song data={song} />
             })}
 
@@ -38,4 +39,4 @@ function Songs(props){
     )
 
 }
-export default Songs;
+export default TopSongs;

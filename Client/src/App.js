@@ -1,15 +1,25 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Songs from'./Componnents/songs.js';
+import AddSong from'./Componnents/AddSong.js';
 import axios from 'axios';
+import Header from './Componnents/Header.js';
+import Songs from './Componnents/Songs';
+import TopSongs from './Componnents/TopSongs';
+
 
 
 function App() {
   return (
+    <>
+    <Header/>
     <div className="App">
-      <Songs/>
+      <div>
+        <TopSongs/>
+      </div>
+      
     </div>
+    </>
   );
 }
 

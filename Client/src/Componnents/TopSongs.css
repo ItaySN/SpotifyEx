@@ -1,0 +1,11 @@
+.topSongsDiv{
+  display: flex;
+  overflow-y:auto;
+  flex-direction: column;
+  margin:5px;
+  padding: 5px;
+  max-height: 300px;
+  width: 600px;
+margin-left: 20px;
+ margin-top: 20px;
+}
