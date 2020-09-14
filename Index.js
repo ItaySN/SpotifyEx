@@ -5,7 +5,7 @@ const mysql = require('mysql');
 require('dotenv').config();
 
 const app = express();
-;
+
 app.use(express.json()); 
 app.use(cors());
 
@@ -27,7 +27,7 @@ db.connect((err) => {
 })
 
 app.get("/songs",(req,res)=>{
-    let sql = `SELECT title, albums.name As album, artists.name As artist,youtube_link AS link , lyrics FROM songs Join artists ON artists.id = songs.artist_id JOIN albums ON albums.id = songs.album_id ORDER BY songs.id`;
+    let sql = `SELECT songs.*,albums.name As album, artists.name As artist FROM songs Join artists ON artists.id = songs.artist_id JOIN albums ON albums.id = songs.album_id ORDER BY songs.id;`;
     let query = db.query(sql,(err,result) => {
         if(err) return result.status(400).send(err.message);
         console.log(result);
