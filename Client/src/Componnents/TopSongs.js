@@ -8,7 +8,7 @@ import './TopSongs.css'
 function TopSongs(){
     const [topSongs,setTopSongs] = useState([]);
 
-    const getAllSongs = async () => {
+    const getTopSongs = async () => {
     try {
       const res = await axios.get('/top_songs');
       setTopSongs(res.data);
@@ -19,7 +19,7 @@ function TopSongs(){
     };
 
     useEffect(()=>{
-        getAllSongs();
+        getTopSongs();
     },[])
 
     // const [newSong,setNewSong] = useState({
@@ -27,7 +27,7 @@ function TopSongs(){
     // });    
     return(
         <>
-        <Header/>
+        
         <div className="topSongsDiv">
             <h1>Top Songs</h1>  
             {topSongs.map((song) =>{
