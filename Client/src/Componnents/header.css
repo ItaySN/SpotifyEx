@@ -4,13 +4,13 @@
     position: sticky;
     top: 0;
     display: flex;
-    background-color: #09196E;
+    background-color:black;
     align-items: center;
-    border-bottom:3px solid black;
+    border-bottom:1px solid rgb(21, 177, 112);
     opacity:0.9;
 }
 .link{
-    background-color:#5664AF;
+    background-color:rgb(21, 177, 112);
     margin-right: 5px;
     border-radius: 5px;
     border: 1px solid black;

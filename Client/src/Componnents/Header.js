@@ -26,6 +26,9 @@ function Header() {
                 <div className="link">List Of Songs
                 </div>            
             </Link>
+            {/* <Link style={{textDecoration:"none"}} to="/top_artists">
+                <div className="link">Top Artists</div>
+            </Link> */}
         </div>
     )
 }

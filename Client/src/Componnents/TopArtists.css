@@ -1,0 +1,32 @@
+.topArtistsDiv{
+  display: flex;
+  overflow: hidden;
+  overflow-y:scroll;
+  flex-grow: 1;
+  flex-direction: column;
+  margin:5px;
+  padding: 5px;
+  max-height: 300px;
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 90%;
+  height:80%;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background:  rgb(66, 77, 66); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(21, 177, 112); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}

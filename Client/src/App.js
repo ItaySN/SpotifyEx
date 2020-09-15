@@ -1,11 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import AddSong from'./Componnents/AddSong.js';
-import axios from 'axios';
 import Header from './Componnents/Header.js';
-import Songs from './Componnents/Songs';
 import TopSongs from './Componnents/TopSongs';
+ import TopArtists from './Componnents/TopArtists';
 
 
 
@@ -14,10 +12,18 @@ function App() {
     <>
     <Header/>
     <div className="App">
-      <div>
-        <TopSongs/>
+      <div className="section">
+          <TopSongs/>
       </div>
-      
+      <div className="section">
+          <TopArtists/>
+      </div>
+      <div className="section">
+          blflflf
+      </div>
+      <div className="section">
+          blalblala
+      </div>
     </div>
     </>
   );

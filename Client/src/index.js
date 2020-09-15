@@ -7,6 +7,8 @@ import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import AddSongs from './Componnents/AddSong';
 import Songs from './Componnents/Songs';
 import TopSongs from './Componnents/TopSongs';
+import TopArtists from './Componnents/TopArtists';
+
 
 
 ReactDOM.render(
@@ -20,12 +22,13 @@ ReactDOM.render(
           <Songs/>
         </Route>
         <Route path="/">
-          <TopSongs/>
+          <App/>
         </Route>
       </Switch>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
+  
 );
 
 // If you want your app to work offline and load faster, you can change
