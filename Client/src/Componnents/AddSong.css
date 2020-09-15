@@ -1,22 +1,24 @@
-.container{
+.containerAddingSong{
 display: flex;
 flex-direction: column;
-justify-content: flex-start;
+justify-content: center;
 align-items: center;
-margin-top: 14px;
+background-color: black;
+height: 100vh;
 }
 #addSongForm{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid rgb(24, 224, 17);
+    border: 2px solid rgb(21, 177, 112);
     border-radius: 35px;
     margin: 5px 40px 20px 40px;
-    background-color: rgb(5, 11, 29);
+    background-color:#5d7763;
     padding: 10px;
     box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
-    width: 400px;
-    color:  rgb(24, 224, 17);
+    width:50vw;
+    color:  black;
+    font-size: 1.2em;
 }
 .labelsDiv{
     margin: 20px;
@@ -30,9 +32,10 @@ label{
     font-weight: bold;
 }
 input{
-    background-color: gray;
+    background-color:rgb(171, 180, 177);
     border-radius: 40px;
-    box-shadow: 3px 2px rgb(24, 224, 17);
+    box-shadow: 1px 1px 1px 0px  black;
+    margin-left: 15px;
 }
 input::placeholder{
     color: black;

@@ -39,7 +39,7 @@ function AddSongs(props){
     return(
     <>
     <Header/>
-    <div className="container">
+    <div className="containerAddingSong">
             <form id="addSongForm" onSubmit={ (e) => (e.preventDefault(),
                 postSong(newSong))}>
                 <div className="labelsDiv">
