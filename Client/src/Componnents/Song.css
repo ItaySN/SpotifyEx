@@ -1,41 +1,40 @@
-.container{
+.containerSong{
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
 align-items: center;
-margin:5px;
-
 }
 .song{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border: 2px solid rgb(48, 17, 224);
+    border: 2px solid rgb(21, 177, 112);
     border-radius: 35px;
-    background-color: rgb(32, 66, 170);
+    background-color: rgb(66, 77, 66);
     padding:5px;
     box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
-    width: 500px;
-    height:120px;
     color: white;
-    
+    width: 30vw;
 }
-.grid-container {
+a{
+    color: white;
+}
+/* .grid-containerSong {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 0.5fr;
     gap: 0px 1px;
     grid-template-areas:
-        "title artist album youtube_link Num_Of_Listening";
+        "title artistName album youtube_link Num_Of_Listening";
 }
 
 .title { grid-area: title; }
 
-.artist { grid-area: artist; }
+.artistName { grid-area: artistName; }
 
 .album { grid-area: album; }
 
 .youtube_link { grid-area: youtube_link; }
 
-.Num_Of_Listening { grid-area: Num_Of_Listening; }
+.Num_Of_Listening { grid-area: Num_Of_Listening; } */
