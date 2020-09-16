@@ -273,7 +273,7 @@ app.get('/top_playlists', (req,res) => {
     })
 })
 app.get('/top_albums', (req,res) => {
-    let sql = `SELECT albums.id AS album_id,albums.name AS album,artists.id AS artits_id,artists.name AS artist,SUM(play_count) AS Num_Of_Listening FROM interactions JOIN songs ON songs.id = song_id JOIN albums ON albums.id = album_id JOIN artists ON artists.id = songs.artist_id GROUP by album_id ORDER BY Num_Of_Listening DESC Limit 5`;
+    let sql = `SELECT albums.id AS album_id,albums.name AS album,albums.cover_img AS album_img,artists.id AS artits_id,artists.name AS artist,SUM(play_count) AS Num_Of_Listening FROM interactions JOIN songs ON songs.id = song_id JOIN albums ON albums.id = album_id JOIN artists ON artists.id = songs.artist_id GROUP by album_id ORDER BY Num_Of_Listening DESC Limit 5`;
     db.query(sql,(err,result) =>{
         if(err){
             return res.status(400).send(err.message);
@@ -285,7 +285,7 @@ app.get('/top_albums', (req,res) => {
 })
 
 app.get('/top_artists', (req,res) => {
-    let sql = `SELECT artists.id ,artists.name As artist,artists.cover_img,SUM(play_count) AS Num_Of_Listening FROM interactions JOIN songs ON songs.id = interactions.song_id JOIN artists ON artists.id = songs.artist_id GROUP by artist_id ORDER BY Num_Of_Listening DESC Limit 5`;
+    let sql = `SELECT artists.id ,artists.name As artist,artists.cover_img AS artist_img,SUM(play_count) AS Num_Of_Listening FROM interactions JOIN songs ON songs.id = interactions.song_id JOIN artists ON artists.id = songs.artist_id GROUP by artist_id ORDER BY Num_Of_Listening DESC Limit 5`;
     db.query(sql,(err,result) =>{
         if(err){
             return res.status(400).send(err.message);
