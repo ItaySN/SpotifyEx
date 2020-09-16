@@ -27,8 +27,17 @@ db.connect((err) => {
 })
 
 app.get("/songs",(req,res)=>{
-    let sql = `SELECT songs.*,albums.name As album, artists.name As artist FROM songs Join artists ON artists.id = songs.artist_id JOIN albums ON albums.id = songs.album_id ORDER BY songs.id;`;
+    let sql = `SELECT songs.*,albums.name As album, albums.cover_img as album_img,artists.cover_img AS artist_img, artists.name As artist FROM songs Join artists ON artists.id = songs.artist_id JOIN albums ON albums.id = songs.album_id ORDER BY songs.id`;
     let query = db.query(sql,(err,result) => {
+        if(err) return result.status(400).send(err.message);
+        console.log(result);
+        res.send(result);
+    })
+})
+
+app.get('/artists',(req,res)=>{
+    let sql =`SELECT id,name,cover_img AS artist_img FROM artists ORDER BY name`;
+    db.query(sql,(err,result) =>{
         if(err) return result.status(400).send(err.message);
         console.log(result);
         res.send(result);

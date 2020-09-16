@@ -1,4 +1,4 @@
-.topSongsDiv{
+.topPlaylistsDiv{
   width: 90%;
   height:80%;
   margin:5px;
@@ -21,3 +21,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+/* .sc-eCApGN cfKeGQ rec rec-carousel
+{
+height: 30vh;
+} */

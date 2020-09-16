@@ -10,18 +10,15 @@ export default function Song({data}){
     
     return (
         <>
-        <div className="containerSong">
+        <div className="containerOneSong">
             {data &&
-                <div className="song">
-                    <p className="title">{data.title} </p>
-                    <p className="artistName">{data.artist} </p>
-                    <p className="album">{data.album} </p>
+                <div className="oneSong">
+                    <p className="allSongsTitleP">{data.title} </p>
+                    <p className="allSongsArtistP"><img className="allSongsArtistImg" src={data.artist_img}></img><span className="allSongsArtistName">{data.artist}</span></p>
+                    <p className="allSongsAlbumP"><img className="allSongsAlbumImg" src={data.album_img}></img><span className="allSongsAlbumName">{data.album}</span></p>
                     <IconContext.Provider value={{size:"2.5em"}}>
                     <a href={data.youtube_link} className="youtube_link" target="_blank"><AiOutlineYoutube/> </a>
                     </IconContext.Provider>
-                    {data.Num_Of_Listening && 
-                    <p className="Num_Of_Listening">Num of listening : {data.Num_Of_Listening}</p>
-                    }
                 </div>
             }
         </div>

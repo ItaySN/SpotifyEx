@@ -4,6 +4,7 @@ import Header from './Componnents/Header.js';
 import TopSongs from './Componnents/Songs/TopSongs';
 import TopArtist from './Componnents/Artists/TopArtists';
 import TopAlbums from './Componnents/Albums/TopAlbums';
+import TopPlaylists from './Componnents/Playlists/TopPlaylists';
 
 
 
@@ -13,16 +14,16 @@ function App() {
     <Header/>
     <div className="App">
       <div className="section">
-          <TopSongs/>
+        <TopSongs/>
       </div>
       <div className="section">
-          <TopArtist/>
+        <TopArtist/>
       </div>
       <div className="section">
-          <TopAlbums/>
+        <TopAlbums/>
       </div>
       <div className="section">
-          Top Playlist
+        <TopPlaylists/>
       </div>
     </div>
     </>

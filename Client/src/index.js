@@ -6,8 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import AddSongs from './Componnents/AddSong';
 import Songs from './Componnents/Songs/Songs';
-
-
+import Artists from './Componnents/Artists/Artists';
 
 
 ReactDOM.render(
@@ -17,8 +16,11 @@ ReactDOM.render(
         <Route path="/add_song">
           <AddSongs/>
         </Route>
-        <Route path="/all_songs">
+        <Route path="/songs">
           <Songs/>
+        </Route>
+        <Route path="/artists">
+          <Artists/>
         </Route>
         <Route path="/">
           <App/>

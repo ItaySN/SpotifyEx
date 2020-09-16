@@ -3,22 +3,16 @@ import './Artist.css'
 
 function Artist({data}) {
     return (
-       <>
-        <div className="containerArtist">
-            {data &&
-            <div className="grid-containerArtist">
-                <div className="artist">
-                    {
-                        data.cover_img &&
-                        <img src={data.cover_img} className="cover_img"></img>
-                    }
-                    <p className="name">{data.artist} </p>
-                    {data.Num_Of_Listening && 
-                    <p className="Num_Of_Listening">Num of listening : {data.Num_Of_Listening}</p>
-                    }
-                </div>
+        <>
+        <div className="allArtistRow">
+            <div className="containerOneArtist">
+                {data &&
+                    <div className="oneArtist">
+                        <div className="allArtistsImgDiv"><img className="allArtistsImgArtist" src={data.artist_img}></img></div>
+                        <h4 className="allArtistsNameP">{data.name} </h4>
+                    </div>
+                }
             </div>
-            }
         </div>
         </>
     )

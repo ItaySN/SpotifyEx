@@ -1,10 +1,10 @@
-.containerSong{
+.containerOneSong{
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
 align-items: center;
 }
-.song{
+.oneSong{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -15,26 +15,39 @@ align-items: center;
     padding:5px;
     box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
     color: white;
-    width: 30vw;
+    width: 90vw;
+    height: 14vh;
+    margin:10px;
 }
 a{
     color: white;
 }
-/* .grid-containerSong {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 0.5fr;
-    gap: 0px 1px;
-    grid-template-areas:
-        "title artistName album youtube_link Num_Of_Listening";
+.allSongsTitleP{
+    position: relative;
+    left: 0;
+    width: 20vw;
+    justify-content: left;
 }
-
-.title { grid-area: title; }
-
-.artistName { grid-area: artistName; }
-
-.album { grid-area: album; }
-
-.youtube_link { grid-area: youtube_link; }
-
-.Num_Of_Listening { grid-area: Num_Of_Listening; } */
+.allSongsArtistImg{
+    border-radius: 50%;
+    height: 10vh;
+    width: 5vw;
+}
+.allSongsArtistP{
+    display: flex;
+    flex-direction:column;
+}
+.allSongsAlbumImg{
+    border-radius: 50%;
+    height: 10vh;
+    width: 5vw;
+}
+.allSongsAlbumP{
+    display: flex;
+    flex-direction:column;
+}
+.allSongsAlbumName{
+    position: relative;
+    left: 0;
+    width: 10vw;
+}

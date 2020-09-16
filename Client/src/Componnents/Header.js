@@ -21,13 +21,13 @@ function Header() {
                 <div className="link">Add a song
                 </div>
             </Link>
-            <Link style={{textDecoration:"none"}} to="/all_songs">
+            <Link style={{textDecoration:"none"}} to="/songs">
                 <div className="link">Songs List
                 </div>            
             </Link>
-            {/* <Link style={{textDecoration:"none"}} to="/top_artists">
-                <div className="link">Top Artists</div>
-            </Link> */}
+            <Link style={{textDecoration:"none"}} to="/artists">
+                <div className="link">Artists</div>
+            </Link>
         </div>
     )
 }
