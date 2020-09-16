@@ -1,0 +1,11 @@
+.oneTopArtistDiv{
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 37vh;
+}
+ .imgTopArtist{
+    height: 25vh;
+    width: 15vw;
+    border-radius: 50%;   
+}
