@@ -4,7 +4,7 @@ import axios from 'axios';
 import './AddSong.css'
 import Header from './Header';
 
-function AddSongs(props){
+function AddSongs(){
 
     const [newSong,setNewSong] = useState({});
     

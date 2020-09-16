@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import useForm from 'react-hook-forms';
 import axios from 'axios';
-import Artist from './Artist.js';
+import Artist from '../Artists/Artist.js';
 // import Header from './Header.js';
 import './TopArtists.css'
 

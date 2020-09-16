@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 // import useForm from 'react-hook-forms';
 import axios from 'axios';
-import Song from './Song.js';
-import Header from './Header.js';
 import './Songs.css'
+import Song from '../Songs/Song.js';
+import Header from '../Header.js';
+
 
 
 function Songs(props){
@@ -23,9 +24,7 @@ function Songs(props){
         getAllSongs();
     },[])
 
-    // const [newSong,setNewSong] = useState({
-
-    // });    
+    
     return(
         <>
         <Header/>

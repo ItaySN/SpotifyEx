@@ -6,8 +6,7 @@ import {
   Route
 } from "react-router-dom";
 import {Link} from "react-router-dom";
-import Songs from './Songs';
-import AddSongs from './AddSong';
+
 
 
 function Header() {
@@ -23,7 +22,7 @@ function Header() {
                 </div>
             </Link>
             <Link style={{textDecoration:"none"}} to="/all_songs">
-                <div className="link">List Of Songs
+                <div className="link">Songs List
                 </div>            
             </Link>
             {/* <Link style={{textDecoration:"none"}} to="/top_artists">

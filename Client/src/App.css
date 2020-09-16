@@ -1,8 +1,11 @@
+body{
+  background-color: black;
+}
 .App {
   text-align: center;
   display: flex;
   width: 100vw;
-  height:  100vh;
+  height:  140vh;
   flex-wrap: wrap;
   align-items:stretch;
   align-content:stretch;
@@ -13,13 +16,32 @@
 }
 .section{
   background-color:#5d7763 ;
-  width: 47%;
-  height: 47%;
+  width: 95%;
+  height: 20%;
   -webkit-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
-border-radius: 10px;
+  -moz-box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
+  border-radius: 10px;
 }
+/* .App{
+  display: flex;
+  width: 100vw;
+  height:  87vh;
+  flex-wrap: wrap;
+  align-items:stretch;
+  align-content:stretch;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #2072BB;
+  padding-top: 15px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.section{
+  width: 95vw;
+  height: 40vh;
+} */
+
 
 .App-logo {
   height: 40vmin;

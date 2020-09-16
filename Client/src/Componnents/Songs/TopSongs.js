@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 // import useForm from 'react-hook-forms';
 import axios from 'axios';
-import Song from './Song.js';
-import Header from './Header.js';
-import './TopSongs.css'
+import './TopSongs.css';
+import TopSong from './TopSong';
+import Carousel from 'react-elastic-carousel';
+
+
+
+
+
 
 function TopSongs(){
     const [topSongs,setTopSongs] = useState([]);
@@ -22,17 +27,25 @@ function TopSongs(){
         getTopSongs();
     },[])
 
-    // const [newSong,setNewSong] = useState({
+    const breakPoints = [
+        { width: 1, itemsToShow: 1 },
+        { width: 450, itemsToShow: 2 },
+        { width: 700, itemsToShow: 3 },
+        { width: 1000, itemsToShow: 4 },
+        { width: 1200, itemsToShow: 5 },
+    ]
 
-    // });    
+
     return(
         <>
-        
         <div className="topSongsDiv">
-            <h1>Top Songs</h1>  
+            <h1>Top Songs</h1>
+            <Carousel color="white" breakPoints={breakPoints} enableAutoPlay>
             {topSongs.map((song) =>{
-                return <Song data={song} />
+                return <TopSong key={song.id} data={song} />
             })}
+            </Carousel>
+            
 
         </div>
         </>

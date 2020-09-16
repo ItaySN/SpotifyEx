@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Header from './Componnents/Header.js';
-import TopSongs from './Componnents/TopSongs';
- import TopArtists from './Componnents/TopArtists';
+import TopSongs from './Componnents/Songs/TopSongs';
+import TopArtist from './Componnents/Artists/TopArtists';
 
 
 
@@ -16,13 +15,13 @@ function App() {
           <TopSongs/>
       </div>
       <div className="section">
-          <TopArtists/>
+          <TopArtist/>
       </div>
       <div className="section">
-          blflflf
+          Top Albums
       </div>
       <div className="section">
-          blalblala
+          Top Playlist
       </div>
     </div>
     </>

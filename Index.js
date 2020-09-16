@@ -250,7 +250,7 @@ app.delete('/songs/:id' , (req,res) => {
 })
 
 app.get('/top_songs', (req,res) =>{
-    let sql = `SELECT songs.*,artists.name AS artist ,albums.name AS album,SUM(play_count) AS Num_Of_Listening FROM interactions JOIN songs ON songs.id = song_id JOIN albums ON albums.id = album_id JOIN artists ON artists.id = songs.artist_id GROUP by song_id ORDER BY Num_Of_Listening DESC Limit 5`;
+    let sql = `SELECT songs.*,albums.name As album, albums.cover_img as album_img, artists.name As artist FROM songs Join artists ON artists.id = songs.artist_id JOIN albums ON albums.id = songs.album_id ORDER BY songs.id;`;
     db.query(sql,(err,result) =>{
         if(err){
             return res.status(400).send(err.message);
