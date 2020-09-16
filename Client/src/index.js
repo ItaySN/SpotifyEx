@@ -5,9 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import AddSongs from './Componnents/AddSong';
-import Songs from './Componnents/Songs';
-import TopSongs from './Componnents/TopSongs';
-import TopArtists from './Componnents/TopArtists';
+import Songs from './Componnents/Songs/Songs';
+
 
 
 

@@ -20,7 +20,7 @@ function TopSongs(){
       console.log(res.data);
     }catch (err) {
       console.error(err.message);
-    }
+        }   
     };
 
     useEffect(()=>{
@@ -34,21 +34,26 @@ function TopSongs(){
         { width: 1000, itemsToShow: 4 },
         { width: 1200, itemsToShow: 5 },
     ]
-
+    
+    
+    // const styleCoursle ={
+    //     position:"relative",
+    //     height:"1000px",
+    //     zIndex:100
+    // }
 
     return(
-        <>
+        <div>
+
+        <h1 style={{display:"flex", alignItems:"flex-start"}}>Top Songs</h1>
         <div className="topSongsDiv">
-            <h1>Top Songs</h1>
             <Carousel color="white" breakPoints={breakPoints} enableAutoPlay>
             {topSongs.map((song) =>{
                 return <TopSong key={song.id} data={song} />
             })}
             </Carousel>
-            
-
         </div>
-        </>
+    </div>
     )
 
 }

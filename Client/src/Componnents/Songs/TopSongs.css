@@ -1,16 +1,7 @@
 .topSongsDiv{
-  display: flex;
-  overflow: hidden;
-  overflow-y:scroll;
-  flex-grow: 1;
-  flex-direction: column;
-  margin:5px;
-  padding: 5px;
-  max-height: 300px;
-  margin-left: 20px;
-  margin-top: 20px;
   width: 90%;
   height:80%;
+  margin:5px;
 }
 ::-webkit-scrollbar {
   width: 10px;
@@ -30,3 +21,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+/* .sc-eCApGN cfKeGQ rec rec-carousel
+{
+height: 30vh;
+} */
