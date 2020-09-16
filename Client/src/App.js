@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Componnents/Header.js';
 import TopSongs from './Componnents/Songs/TopSongs';
 import TopArtist from './Componnents/Artists/TopArtists';
+import TopAlbums from './Componnents/Albums/TopAlbums';
 
 
 
@@ -18,7 +19,7 @@ function App() {
           <TopArtist/>
       </div>
       <div className="section">
-          Top Albums
+          <TopAlbums/>
       </div>
       <div className="section">
           Top Playlist
