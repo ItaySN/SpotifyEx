@@ -44,6 +44,15 @@ app.get('/artists',(req,res)=>{
     })
 })
 
+app.get('/albums',(req,res)=>{
+    let sql =`SELECT albums.*,artists.id AS artist_id,artists.name AS artist,artists.cover_img AS artist_img FROM albums JOIN artists ON albums.artist_id = artists.id ORDER BY name`;
+    db.query(sql,(err,result) =>{
+        if(err) return result.status(400).send(err.message);
+        console.log(result);
+        res.send(result);
+    })
+})
+
 app.get('/songs/:id', (req,res) => {
     let sql = `SELECT * FROM songs WHERE id = ${req.params.id}`;
     let query = db.query(sql, (err,result) => {

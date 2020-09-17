@@ -7,7 +7,6 @@ import TopAlbums from './Componnents/Albums/TopAlbums';
 import TopPlaylists from './Componnents/Playlists/TopPlaylists';
 
 
-
 function App() {
   return (
     <>

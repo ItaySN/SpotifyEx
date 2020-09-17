@@ -7,6 +7,7 @@ import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import AddSongs from './Componnents/AddSong';
 import Songs from './Componnents/Songs/Songs';
 import Artists from './Componnents/Artists/Artists';
+import Albums from './Componnents/Albums/Albums';
 
 
 ReactDOM.render(
@@ -21,6 +22,9 @@ ReactDOM.render(
         </Route>
         <Route path="/artists">
           <Artists/>
+        </Route>
+        <Route path="/albums">
+          <Albums/>
         </Route>
         <Route path="/">
           <App/>

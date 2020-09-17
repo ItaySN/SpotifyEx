@@ -1,0 +1,38 @@
+.allAlbumsRow{
+    display: flex;
+    flex-direction: row;
+}
+.containerOneAlbum{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+margin:5px;
+}
+.oneAlbum{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid rgb(21, 177, 112);
+    border-radius: 5px;
+    background-color: rgb(66, 77, 66);
+    padding:5px;
+    box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.75);
+    color: white;
+    width: 20vw;
+    height: 55vh;
+    
+}
+.allAlbumsImgDiv{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.allAlbumsCoverImg{
+    position: relative;
+    height: 40vh;
+    width: 20vw;
+}
+.allAlbumsNameP{
+    margin-top: 0;
+}
