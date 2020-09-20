@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import {Link} from "react-router-dom";
 
 function TopPlaylist({data}) {
     return (
         <div className="oneTopPlaylisDiv">
-            <h4>{data.playlist}</h4>
+            <h4><Link style={{textDecoration:"none",color:"black"}} to={`/playlist/${data.playlist_id}`}>{data.playlist}</Link></h4>
         </div>
     )
 }

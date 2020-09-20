@@ -1,23 +1,16 @@
 import React from 'react';
 import './header.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
 import {Link} from "react-router-dom";
-import Dropdown from 'react-bootstrap/Dropdown'
-import Button from 'react-bootstrap/Button';
+import { Dropdown} from  'react-bootstrap';
 // import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-
-
 
 
 function Header() {
     return (
-        <div className="headerDiv">
+                     
+           
+
+            <div className="headerDiv">
             <Link style={{textDecoration:"none"}} to="/">
                 <div className="link">Home Page
                 </div>
@@ -28,7 +21,7 @@ function Header() {
                 </div>
             </Link>
             <Link style={{textDecoration:"none"}} to="/songs">
-                <div className="link">Songs List
+                <div className="link">Songs
                 </div>            
             </Link>
             <Link style={{textDecoration:"none"}} to="/artists">
@@ -37,8 +30,14 @@ function Header() {
             <Link style={{textDecoration:"none"}} to="/albums">
                 <div className="link">Albums</div>
             </Link>
+            <Link style={{textDecoration:"none"}} to="/playlists">
+                <div className="link">Playlists</div>
+            </Link>
+            
+
             
         </div>
+
     )
 }
 
