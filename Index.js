@@ -10,8 +10,6 @@ app.use(express.json());
 app.use(cors());
 
 
-
-
 const db = mysql.createConnection({
     host : 'localhost',
     user: process.env.USER,
@@ -53,6 +51,15 @@ app.get('/albums',(req,res)=>{
     })
 })
 
+app.get('/playlists',(req,res)=>{
+    let sql =`SELECT * FROM playlists`;
+    db.query(sql,(err,result) =>{
+        if(err) return result.status(400).send(err.message);
+        console.log(result);
+        res.send(result);
+    })
+})
+
 app.get('/songs/:id', (req,res) => {
     let sql = `SELECT * FROM songs WHERE id = ${req.params.id}`;
     let query = db.query(sql, (err,result) => {
@@ -61,16 +68,50 @@ app.get('/songs/:id', (req,res) => {
     }); 
 });
 
+// app.get('/artists/:id', (req,res) => {
+//     let sql = `SELECT * FROM artists WHERE id = ${req.params.id}`;
+//     let query = db.query(sql, (err,result) => {
+//        if(err) return res.status(400).send(err.message);
+//         res.send(result);
+//     }); 
+// });
+
 app.get('/artists/:id', (req,res) => {
-    let sql = `SELECT * FROM artists WHERE id = ${req.params.id}`;
+    console.log(req.params.id)
+    let sql = `select songs.*,artists.name AS artist,albums.name,artists.cover_img AS artist_img,albums.cover_img AS album_img from songs join artists on songs.artist_id=artists.id join albums on songs.album_id=albums.id where songs.artist_id = ${req.params.id}`;
+    db.query(sql, (err,result) => {
+        // if(err) return res.status(400).send(err.message);
+        if(err) console.log(err.message);
+        console.log(result);
+        res.send(result);
+    }); 
+});
+
+app.get('/albums/:id', (req,res) => {
+    let sql = `SELECT albums.*, artists.name AS artist,artists.cover_img AS artist_img FROM albums
+JOIN artists ON artists.id = albums.artist_id
+WHERE albums.id=
+ ${req.params.id}`;
     let query = db.query(sql, (err,result) => {
        if(err) return res.status(400).send(err.message);
         res.send(result);
     }); 
 });
 
-app.get('/albums/:id', (req,res) => {
-    let sql = `SELECT * FROM albums WHERE id = ${req.params.id}`;
+app.get('/songs_ByAlbum/:id',(req,res) =>{
+    let sql =`SELECT songs.*,albums.name As album, albums.cover_img as album_img
+,artists.cover_img AS artist_img,artists.name As artist FROM songs
+Join artists ON artists.id = songs.artist_id
+JOIN albums ON albums.id = songs.album_id 
+WHERE songs.album_id = ${req.params.id}`;
+    let query = db.query(sql,(err,result) =>{
+        if(err) return res.status(400).send(err.message);
+        res.send(result);
+    })
+});
+
+app.get('/albums_ByArtist/:id', (req,res) => {
+    let sql = `SELECT albums.* ,artists.name AS artist , artists.cover_img AS artist_img FROM albums JOIN artists ON albums.artist_id = artists.id WHERE albums.artist_id = ${req.params.id}`;
     let query = db.query(sql, (err,result) => {
        if(err) return res.status(400).send(err.message);
         res.send(result);
@@ -78,11 +119,26 @@ app.get('/albums/:id', (req,res) => {
 });
 
 app.get('/playlists/:id', (req,res) => {
-    let sql = `SELECT * FROM playlists WHERE id = ${req.params.id}`;
+    let sql = `select id, playlists.name AS name , playlists.cover_img AS playlist_img FROM playlists
+WHERE playlists.id = ${req.params.id}`;
     let query = db.query(sql, (err,result) => {
        if(err) return res.status(400).send(err.message);
         res.send(result);
     }); 
+});
+
+app.get('/songs_ByPlaylist/:id',(req,res) =>{
+    let sql =`SELECT songs.id,songs.title,songs.artist_id,songs.album_id,songs.length,songs.lyrics,
+ artists.name AS artist,albums.name AS album, albums.cover_img AS album_img,
+playlist_songs.playlist_id FROM songs
+JOIN playlist_songs ON playlist_songs.song_id = songs.id
+JOIN albums on albums.id = songs.album_id
+JOIN artists ON artists.id = songs.artist_id
+WHERE playlist_songs.playlist_id = ${req.params.id}`;
+    let query = db.query(sql,(err,result) =>{
+        if(err) return res.status(400).send(err.message);
+        res.send(result);
+    })
 });
 
 app.post('/playlist' , (req,res) => {
