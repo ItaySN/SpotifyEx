@@ -5,7 +5,7 @@ body{
   text-align: center;
   display: flex;
   width: 100vw;
-  height:  150vh;
+  height:  250vh;
   flex-wrap: wrap;
   align-items:stretch;
   align-content:stretch;
@@ -15,7 +15,9 @@ body{
   padding-top: 15px; 
 }
 .section{
-  background-color:#5d7763 ;
+  /* background-color:#5d7763 ; */
+  background-color: black;
+  color: whitesmoke;
   width: 95vw;
   height: 55vh;
   margin-bottom: 10px;
