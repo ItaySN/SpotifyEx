@@ -1,0 +1,20 @@
+.OneAlbumArtistImg{
+    height: 10vh;
+    width: 7vw;
+    border-radius: 50%;
+}
+.OneAlbumArtistImgDiv{
+    align-items: center;
+    text-align: center;
+
+}
+.oneAlbumPageNameArtist{
+    margin-bottom: 50px;
+}
+.oneAlbumPageImgAlbum{
+    height: 30vh;
+    width: 15vw;
+}
+.OneAlbumPageArtistImgDiv{
+    margin-top: 25px;
+}
