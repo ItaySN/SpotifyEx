@@ -6,6 +6,8 @@ import Artist from '../Artists/Artist.js';
 import './TopArtists.css'
 import TopArtist from './TopArtist.js';
 import Carousel from 'react-elastic-carousel';
+import { IconContext } from "react-icons";
+import { GiMicrophone} from 'react-icons/gi';
 
 function TopArtists(){
     const [topArtists,setTopArtists] = useState([]);
@@ -36,7 +38,9 @@ function TopArtists(){
         <>
         
         <div className="topArtistsDiv">
-            <h1 style={{display:"flex", alignItems:"flex-start"}}>Top Artists</h1>
+            <IconContext.Provider value={{size:"1.3em",color:"rgb(206, 148, 148)"}}>
+                       <h3 style={{display:"flex", alignItems:"flex-start"}}>Top Artists <GiMicrophone/> </h3>
+            </IconContext.Provider>
             <Carousel color="red" breakPoints={breakPoints}>
             {topArtists.map((artist) =>{
                 return <TopArtist key={artist.id} data={artist} />

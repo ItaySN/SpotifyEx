@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Songs.css'
 import Song from '../Songs/Song.js';
-import Header from '../Header.js';
+import Header from '../Header';
 
 
 
@@ -27,7 +27,7 @@ function Songs(props){
     
     return(
         <>
-        <Header/>
+            <Header/>
         <div className="allSongs">
             <h1>Songs List:</h1>
             {songs.map((song) =>{

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TopAlbum from './TopAlbum';
 import Carousel from 'react-elastic-carousel';
-import './TopAlbums.css'
+import './TopAlbums.css';
+import AlbumIcon from '@material-ui/icons/Album';
 
 function TopAlbums() {
 
@@ -31,8 +32,8 @@ const breakPoints = [
 
     return (
         <div className="topAlbumsDiv">
-            <h1 style={{display:"flex", alignItems:"flex-start"}}>Top Albums</h1>
-            <Carousel color="white" breakPoints={breakPoints}>
+           <h3 style={{display:"flex", alignItems:"flex-start"}}>Top Albums <AlbumIcon style={{height:"5vh",color:"rgb(206, 148, 148)"}}/></h3>
+            <Carousel  color="white" breakPoints={breakPoints}>
             {topAlbums.map(album =>{
                 return <TopAlbum key={album.album_id} data={album}/>
             })}

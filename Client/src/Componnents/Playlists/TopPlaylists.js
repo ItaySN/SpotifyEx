@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import TopPlaylist from './TopPlaylist';
 import Carousel from 'react-elastic-carousel';
+import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 
 
 function TopPlaylists() {
@@ -31,7 +32,7 @@ function TopPlaylists() {
 
     return (
         <div className="topPlaylistsDiv">
-            <h1 style={{display:"flex", alignItems:"flex-start"}}>Top Playlists</h1>
+            <h3 style={{display:"flex", alignItems:"flex-start"}}>Top Playlists <QueueMusicIcon style={{height:"5vh",color:"rgb(206, 148, 148)"}}/></h3>
             <Carousel breakPoints={breakPoints}>
             {topPlaylists.map((playlist)=>{    
                 return <TopPlaylist key={playlist.id} data={playlist}/>

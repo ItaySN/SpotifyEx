@@ -60,7 +60,6 @@ function OneAristPage() {
             </Carousel>
             <h3>Suggested songs:</h3>
             <Carousel breakPoints={breakPointsSongs}>
-
                     {songs.map(song=>{
                         return <TopSong key={song.song_id} data={{...song,song_name:song.title}} displayFromHomePage={false} />
                     })}

@@ -4,6 +4,7 @@ import axios from 'axios';
 import './TopSongs.css';
 import TopSong from './TopSong';
 import Carousel from 'react-elastic-carousel';
+import AudiotrackIcon from '@material-ui/icons/Audiotrack';
 
 
 
@@ -45,7 +46,7 @@ function TopSongs(){
     return(
         <div>
 
-        <h1 style={{display:"flex", alignItems:"flex-start"}}>Top Songs</h1>
+        <h3 style={{display:"flex", alignItems:"flex-start"}}>Top Songs <AudiotrackIcon style={{height:"5vh",color:"rgb(206, 148, 148)"}}/></h3>
         <div className="topSongsDiv">
             <Carousel color="white" breakPoints={breakPoints} enableAutoPlay>
             {topSongs.map((song) =>{

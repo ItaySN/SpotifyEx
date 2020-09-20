@@ -5,6 +5,7 @@ import { IconContext } from "react-icons";
 import { AiOutlineYoutube } from 'react-icons/ai';
 
 
+
 function TopSong({data,displayFromHomePage=true}) {
     return (
         
@@ -25,7 +26,7 @@ function TopSong({data,displayFromHomePage=true}) {
             }
             {
                 displayFromHomePage ?
-                <p className="artistAndLength"><span><Link style={{textDecoration:"none",color:"black"}} to={`/artist/${data.artist_id}`}>{data.artist}</Link></span>|<span>{data.length}</span></p>
+                <p className="artistAndLength"><span><Link style={{textDecoration:"none"}} to={`/artist/${data.artist_id}`}>{data.artist}</Link></span>|<span>{data.length}</span></p>
                 :  <p className="artistAndLength"><span>{data.length}</span></p>
             }
         </div>
