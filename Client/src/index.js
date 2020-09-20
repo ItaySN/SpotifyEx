@@ -8,12 +8,26 @@ import AddSongs from './Componnents/AddSong';
 import Songs from './Componnents/Songs/Songs';
 import Artists from './Componnents/Artists/Artists';
 import Albums from './Componnents/Albums/Albums';
+import Playlists from './Componnents/Playlists/Playlists';
+import OneAristPage from './Componnents/Artists/OneAristPage';
+import OneAlbumPage from './Componnents/Albums/OneAlbumPage';
+import OnePlaylistPage from './Componnents/Playlists/OnePlaylistPage';
+
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
+        <Route path="/playlist/:id">
+         <OnePlaylistPage/>
+        </Route>
+        <Route path="/album/:id">
+          <OneAlbumPage/>
+        </Route>
+        <Route path='/artist/:id'>
+          <OneAristPage/>
+        </Route>
         <Route path="/add_song">
           <AddSongs/>
         </Route>
@@ -25,6 +39,9 @@ ReactDOM.render(
         </Route>
         <Route path="/albums">
           <Albums/>
+        </Route>
+        <Route path="/playlists">
+          <Playlists/>
         </Route>
         <Route path="/">
           <App/>
