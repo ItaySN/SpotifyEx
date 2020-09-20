@@ -1,0 +1,9 @@
+.oneArtistPageArtistImgDiv{
+    text-align: center;
+    align-items: center;
+}
+.oneArtistPageArtistImg{
+    border-radius: 50%;
+    height: 30vh;
+    width: 15vw;
+}
