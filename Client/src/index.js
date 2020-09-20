@@ -12,6 +12,7 @@ import Playlists from './Componnents/Playlists/Playlists';
 import OneAristPage from './Componnents/Artists/OneAristPage';
 import OneAlbumPage from './Componnents/Albums/OneAlbumPage';
 import OnePlaylistPage from './Componnents/Playlists/OnePlaylistPage';
+import OneSongPage from './Componnents/Songs/OneSongPage';
 
 
 
@@ -19,6 +20,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
+        <Route path="/songs/:id">
+          <OneSongPage/>
+        </Route>
         <Route path="/playlist/:id">
          <OnePlaylistPage/>
         </Route>
