@@ -61,7 +61,11 @@ app.get('/playlists',(req,res)=>{
 })
 
 app.get('/songs/:id', (req,res) => {
-    let sql = `SELECT * FROM songs WHERE id = ${req.params.id}`;
+    let sql = `SELECT songs.*, artists.name AS artist , artists.id AS artist_id, albums.name AS album , albums.id AS album_id
+FROM songs
+JOIN artists ON artists.id = songs.artist_id
+JOIN albums ON albums.id = songs.album_id
+WHERE songs.id =  ${req.params.id}`;
     let query = db.query(sql, (err,result) => {
         if(err) return res.status(400).send(err.message);
         res.send(result);
@@ -336,7 +340,7 @@ app.get('/top_songs', (req,res) =>{
 })
 
 app.get('/top_playlists', (req,res) => {
-    let sql = `SELECT  playlist_songs.playlist_id,playlists.name AS playlist,SUM(interactions.play_count) AS Num_Of_Listenings  FROM playlist_songs JOIN interactions ON interactions.id = playlist_songs.song_id JOIN playlists ON playlists.id = playlist_songs.playlist_id GROUP BY playlist_id ORDER BY- Num_Of_Listenings LIMIT 5`;
+    let sql = `SELECT  playlist_songs.playlist_id,playlists.name AS playlist,SUM(interactions.play_count) AS Num_Of_Listenings, playlists.cover_img AS playlist_img  FROM playlist_songs JOIN interactions ON interactions.id = playlist_songs.song_id JOIN playlists ON playlists.id = playlist_songs.playlist_id GROUP BY playlist_id ORDER BY- Num_Of_Listenings LIMIT 5`;
     db.query(sql,(err,result) =>{
         if(err){
             return res.status(400).send(err.message);
