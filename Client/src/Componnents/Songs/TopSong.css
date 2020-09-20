@@ -3,9 +3,13 @@
     top: 0;
     left: 0;
     height: 37vh;
+    
 }
  .cover_imgAlbum{
     height: 20vh;
-    border-radius: 10%;
+    border-radius: 10%; 
+}
+.playImgOfSongs{
+    margin-top: 30px;
 }
 
