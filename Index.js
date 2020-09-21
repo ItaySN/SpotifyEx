@@ -72,14 +72,6 @@ WHERE songs.id =  ${req.params.id}`;
     }); 
 });
 
-// app.get('/artists/:id', (req,res) => {
-//     let sql = `SELECT * FROM artists WHERE id = ${req.params.id}`;
-//     let query = db.query(sql, (err,result) => {
-//        if(err) return res.status(400).send(err.message);
-//         res.send(result);
-//     }); 
-// });
-
 app.get('/artists/:id', (req,res) => {
     console.log(req.params.id)
     let sql = `select songs.*,artists.name AS artist,albums.name AS album,artists.cover_img AS artist_img,albums.cover_img AS album_img
