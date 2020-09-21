@@ -10,7 +10,7 @@ import TopPlaylists from './Componnents/Playlists/TopPlaylists';
 function App() {
   return (
     <>
-    <Header/>
+    <Header color={"TopCharts"}/>
     <div className="App">
       <div className="section">
         <TopSongs/>

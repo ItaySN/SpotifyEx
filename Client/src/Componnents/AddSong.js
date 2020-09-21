@@ -38,7 +38,7 @@ function AddSongs(){
 
     return(
     <>
-    <Header/>
+    <Header color={'addSong'}/>
     <div className="containerAddingSong">
             <form id="addSongForm" onSubmit={ (e) => (e.preventDefault(),
                 postSong(newSong))}>

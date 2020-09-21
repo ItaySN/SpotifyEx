@@ -40,7 +40,7 @@ function OnePlaylistPage() {
             <div><img src={playlist.playlist_img}></img></div>
             <Carousel breakPoints={breakPoints}>
                 {songs.map(song => {
-                return <Song key={id} data={song} displayFromAllPage={false} playlistSet={true} />
+                return <Song key={id} data={song} displayFromAllPage={false} playlistSet={true} playlist_id={id} />
                 })}
             </Carousel>
 

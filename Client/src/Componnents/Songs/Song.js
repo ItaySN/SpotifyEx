@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 
 
 
-export default function Song({data,displayFromAllPage=true,playlistSet=false}){
+export default function Song({data,displayFromAllPage=true,playlistSet=false,playlist_id}){
     
     return (
         <>
@@ -16,24 +16,30 @@ export default function Song({data,displayFromAllPage=true,playlistSet=false}){
             {data &&
                 displayFromAllPage ? 
                     <div className="oneSong">
-                        <p className="allSongsTitleP">{data.title}</p>
+                        <p className="allSongsTitleP"><Link to={`/songs/${data.id}?from_topSong=${data.id}`} style={{textDecoration:"none"}}>{data.title}</Link><span>{data.length}</span></p>
                         <p className="allSongsArtistP"><Link style={{textDecoration:"none"}} to={`/artist/${data.artist_id}`}><img className="allSongsArtistImg" src={data.artist_img}></img><span className="allSongsArtistName">{data.artist}</span></Link></p>
                         <p className="allSongsAlbumP"><Link style={{textDecoration:"none"}} to={`/album/${data.album_id}`}><img className="allSongsAlbumImg" src={data.album_img}></img><span className="allSongsAlbumName">{data.album}</span></Link></p>
                         <IconContext.Provider value={{size:"2.5em"}}>
-                        <a href={data.youtube_link} className="youtube_link" target="_blank"><AiOutlineYoutube/> </a>
+                        <Link to={`/songs/${data.id}?from_topSong=${data.id}`} style={{textDecoration:"none"}}><AiOutlineYoutube/></Link>  
                         </IconContext.Provider>
                     </div>
                 :  
                     <div>
                         {playlistSet ? 
                         <p><Link style={{textDecoration:"none"}} to={`/album/${data.album_id}`}><img className="squaringImgAlbum" src={data.album_img}></img></Link></p>
-                        : <IconContext.Provider value={{size:"4.5em"}}>
-                        <Link style={{textDecoration:"none"}}>
+                        : 
+                        <IconContext.Provider value={{size:"4.5em"}}>
+                        <Link to={`/songs/${data.id}?album=${data.album_id}`} style={{textDecoration:"none"}}>
                         <AiOutlineYoutube/> 
                         </Link>
                         </IconContext.Provider>
+                        
                     }
-                        <h4>{data.title}</h4>
+                        {playlistSet ?
+                        <h4><Link to={`/songs/${data.id}?playlist=${playlist_id}`} style={{textDecoration:"none"}}>{data.title}</Link></h4>
+                        :
+                            <h4><Link to={`/songs/${data.id}?album=${data.album_id}`} style={{textDecoration:"none"}}>{data.title}</Link></h4>
+                        }
                         {playlistSet ? 
                             <p><Link style={{textDecoration:"none"}} to={`/artist/${data.artist_id}`}>{data.artist}</Link></p>
                             : <></>

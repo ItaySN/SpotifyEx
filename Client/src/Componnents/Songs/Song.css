@@ -26,6 +26,9 @@ a{
 }
 .allSongsTitleP{
     position: relative;
+    display: flex;
+    padding: 4px;
+    flex-direction: column;
     left: 0;
     width: 20vw;
     justify-content: left;

@@ -3,7 +3,9 @@ import axios from 'axios';
 import { useParams,useLocation,useHistory} from 'react-router-dom';
 import YouTube from 'react-youtube';
 import Song from '../Songs/Song.js';
-
+import RecommendedSongs from './RecommendedSongs.js';
+import './OneSongPage.css'
+import Header from '../Header.js';
 
    
 
@@ -37,10 +39,10 @@ function OneSongPage({data}) {
                 const res =  await axios.get(`/songs_ByAlbum/${queryP.get('album')}`)
                 setListSongs(res.data)
             }
-            // else if(queryP.has('top_songs')){
-            //     const res =  await axios.get(`/top_songs/${queryP.get('top_songs')}`)
-            //     setListSongs(res.data)
-            // }         
+            else if(queryP.has('from_topSong')){
+                const res =  await axios.get(`/from_topSong/${queryP.get('from_topSong')}`)
+                setListSongs(res.data)
+            }         
         } catch (err) {
             console.error(err.message);
         }
@@ -49,8 +51,8 @@ function OneSongPage({data}) {
 
 
     const opts = {
-    height: '390',
-    width: '640',
+    height:'300',
+    width:'600',
     playerVars: {
         autoplay: 1,
     },
@@ -78,26 +80,57 @@ const nextSong = React. useCallback(() =>{
         } else {
         return
         }
-
-
     })
+
+const firstSong = React. useCallback(() =>{
+    let index = 0;
+    let tempObj;
+    listSogns.forEach((tempSong,tempindex)=>{
+        if(tempSong.id === song.id && tempindex !== 0){
+            tempObj = tempSong;
+            index = tempindex;
+        }
+    })
+        if(tempObj){
+            listSogns[index] = listSogns[0];
+            listSogns[0] = tempObj;
+        }
+    })
+
 
 
 
     return (
         <>
-            <div className="videoPlayer">
+        <Header/>
+        <div className="OneSongPage">
             {song&& 
-              <YouTube videoId={getVideosId()} onEnd={nextSong} opts={opts} />
+                <div className="videoPlayer">
+                    <YouTube videoId={getVideosId()} onEnd={nextSong} opts={opts} />
+                    <div className="oneSongDetailsTitle" > {song.title} <span style={{fontSize:"0.7em"}}>{song.length}</span> </div>
+                    <div className="oneSongDetailsArtistAlbum"> {song.artist}<span>|</span><span style={{color:'white'}}>{song.album}</span></div>
+                  
+                    
+
+
+                </div>
             }
-            </div>
             <div className="listOfSongs">               
                {listSogns &&
-                    listSogns.map(song=>{
-                        return <Song data={song}/>
+                    listSogns.map((tempSong,index)=>{
+                        return (
+                            <>
+                            <RecommendedSongs firstSong={firstSong()} key={song.id} data={tempSong} queryP={queryP}/> 
+                            {(index < listSogns.length-1) &&
+                                <hr  style={{color:"white", width:"32vw",boxShadow:"0px 3px 2px 3px  rgb(44, 43, 43)" }}></hr>
+                            }   
+                            </>
+                        )
+                        
                     })
-               }
+                }
             </div>
+        </div>
         </>
     )
 }

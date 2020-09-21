@@ -6,7 +6,7 @@ import Song from '../Songs/Song';
 import Carousel from 'react-elastic-carousel';
 import {Link} from "react-router-dom";
 import './OneAlbumPage.css'
-import { Button } from 'react-bootstrap';
+
 
 function OneAlbumPage() {
     const {id} = useParams();
@@ -45,7 +45,9 @@ function OneAlbumPage() {
             <p className="oneAlbumPageNameArtist"><h2 style={{textAlign:"center"}}><Link style={{textDecoration:"none"}} to={`/artist/${album.artist_id}`}>{album.artist}<span className="OneAlbumArtistImgSpan"><img className="OneAlbumArtistImg" src={album.artist_img}></img></span></Link></h2></p>
             <Carousel breakPoints={breakPoints}>
                 {songs.map(song => {
-                return <Song key={id} data={song} displayFromAllPage={false} />
+
+                    return <Song key={song.id} data={song} displayFromAllPage={false}/>
+                
                 })}
             </Carousel>
 

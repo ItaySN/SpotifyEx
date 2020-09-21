@@ -27,7 +27,7 @@ function Songs(props){
     
     return(
         <>
-            <Header/>
+            <Header color={'songs'}/>
         <div className="allSongs">
             <h1>Songs List:</h1>
             {songs.map((song) =>{

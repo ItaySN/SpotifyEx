@@ -22,7 +22,7 @@ function Albums() {
 
     return (
     <>
-        <Header/>
+        <Header color={'albums'}/>
         <div className="allAlbums">
             {allAlbums.map((album)=>{
                 return <Album key={album.id} data={album}/>

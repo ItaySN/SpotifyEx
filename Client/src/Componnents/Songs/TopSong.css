@@ -2,8 +2,8 @@
     position: relative;
     top: 0;
     left: 0;
-    height: 40vh;
-    margin-top: 3px;
+    height: 42vh;
+    margin-top: 2px;
     
     /* background-color: rgb(56, 56, 56); */
      /* box-shadow: 0px 0px 3px 2px rgba(218, 209, 209, 0.75); */
@@ -11,12 +11,15 @@
     
 }
  .cover_imgAlbum{
-    height: 25vh;
+    height: 23vh;
     width: 15vw;
     box-shadow: 0px 0px 3px 4px rgba(218, 209, 209, 0.75);
     border-radius: 10%; 
 }
 .playImgOfSongs{
     margin-top: 30px;
+}
+.artistAndLength{
+    margin-bottom: auto;
 }
 

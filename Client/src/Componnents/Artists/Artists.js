@@ -21,7 +21,7 @@ function Artists() {
 
     return (
     <>
-        <Header/>
+        <Header color={'artists'}/>
         <div className="allArtists">
             {allArtists.map((artist)=>{
                 return <Artist key={artist.id} data={artist}/>

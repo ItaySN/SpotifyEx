@@ -22,7 +22,7 @@ function Playlists() {
 
     return (
     <>
-        <Header/>
+        <Header color={'playlists'}/>
         <div className="allPlaylists">
             {allPlaylists.map((playlist)=>{
                 return <Playlist key={playlist.id} data={playlist}/>

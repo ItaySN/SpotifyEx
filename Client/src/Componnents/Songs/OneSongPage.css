@@ -1,0 +1,45 @@
+.OneSongPage{
+    display: flex;
+    flex-direction: row;
+     width: 90vw;
+     height: 100vh;
+     gap:20px;
+     padding: 10px;
+}
+
+.videoPlayer{
+    margin-top: 30px;
+}
+
+.listOfSongs{
+    color: white;
+    flex-direction: column;
+    width: 34vw;
+    height: 70vh;
+    margin-left: auto;
+    margin-top: 30px;
+    overflow-y: scroll;
+}
+
+
+.listOfSongs:-webkit-scrollbar-thumb {
+  background: white;
+}
+.listOfSongs::-webkit-scrollbar-track{
+    background-color: black;
+}
+.listOfSongs::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(53, 53, 53);
+}
+.oneSongDetailsTitle{
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: white;
+
+}
+.oneSongDetailsArtistAlbum{
+    display: flex;
+    color: white;
+    gap: 20px;
+
+}

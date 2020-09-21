@@ -7,21 +7,3 @@
   width: 10px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: rgb(66, 77, 66); 
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background:  rgb(21, 177, 112); 
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-}
-/* .sc-eCApGN cfKeGQ rec rec-carousel
-{
-height: 30vh;
-} */
