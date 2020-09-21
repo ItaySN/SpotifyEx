@@ -86,7 +86,7 @@ function Header({color}) {
                 </Link>
                 :
                 <Link style={{textDecoration:"none"}} to="/add_song">
-                    <div className="link" >Add a song
+                    <div className="link" >Add song
                     </div>
                 </Link>
                 
