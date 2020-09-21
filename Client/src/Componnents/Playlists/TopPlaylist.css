@@ -9,4 +9,22 @@
     border-radius: 10%;
     box-shadow: 0px 0px 3px 4px rgba(218, 209, 209, 0.75);
 }
+.topPlaylistsImg{
+    height: 23vh;
+    width: 15vw;
+    box-shadow: 0px 0px 3px 4px rgba(218, 209, 209, 0.75);
+    border-radius: 10%; 
+}
+.topPlaylistsImgDiv{
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 42vh;
+    margin-top: 2px;
+    
+    /* background-color: rgb(56, 56, 56); */
+     /* box-shadow: 0px 0px 3px 2px rgba(218, 209, 209, 0.75); */
+    border-radius: 5px;
+
+}
 

@@ -332,7 +332,7 @@ app.delete('/songs/:id' , (req,res) => {
 })
 
 app.get('/top_songs', (req,res) =>{
-    let sql = `SELECT songs.*,artists.name AS artist ,albums.name AS album,SUM(play_count) AS Num_Of_Listening FROM interactions 
+    let sql = `SELECT songs.*,artists.name AS artist,albums.cover_img AS album_img,albums.name AS album,SUM(play_count) AS Num_Of_Listening FROM interactions 
 JOIN songs ON songs.id = song_id
 JOIN albums ON albums.id = album_id
 JOIN artists ON artists.id = songs.artist_id
