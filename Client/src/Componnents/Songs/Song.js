@@ -26,7 +26,7 @@ export default function Song({data,displayFromAllPage=true,playlistSet=false,pla
                 :  
                     <div>
                         {playlistSet ? 
-                        <p><Link style={{textDecoration:"none"}} to={`/album/${data.album_id}`}><img className="squaringImgAlbum" src={data.album_img}></img></Link></p>
+                        <p><Link style={{textDecoration:"none"}} to={`/album/${data.album_id}`}><img className="playlistImgAlbum" src={data.album_img}></img></Link></p>
                         : 
                         <IconContext.Provider value={{size:"4.5em"}}>
                         <Link to={`/songs/${data.id}?album=${data.album_id}`} style={{textDecoration:"none"}}>

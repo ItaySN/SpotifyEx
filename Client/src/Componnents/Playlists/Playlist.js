@@ -8,8 +8,8 @@ function Playlist({data}) {
         <div className="allPlaylistsRow">
             <div className="containerOnePlaylist">
                 {data &&
-                    <div className="onePlaylist">
-                        <div className="allPlaylistsImgDiv"><Link style={{textDecoration:"none"}} to={`/playlist/${data.id}`}><img className="allPlaylistsCoverImg" src={data.playlist_img}></img></Link></div>
+                    <div  className="onePlaylist">
+                        <div className="allPlaylistsImgDiv"><Link style={{textDecoration:"none"}} to={`/playlist/${data.id}`}><img className="allPlaylistsCoverImg" src={data.cover_img}></img></Link></div>
                         <h4 className="allPlaylistsNameP"><Link style={{textDecoration:"none"}} to={`/playlist/${data.id}`}>{data.name}</Link> </h4>
                     </div>
                 }

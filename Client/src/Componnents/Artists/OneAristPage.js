@@ -36,7 +36,7 @@ function OneAristPage() {
     ]
        const breakPointsAlbums = [
         { width: 1, itemsToShow: 1 },
-        { width: 450, itemsToShow: 2 },
+        
     ]
 
 
@@ -52,13 +52,13 @@ function OneAristPage() {
                 <img className="oneArtistPageArtistImg" src={artist.artist_img}></img> 
             </div>
             <h1>{artist.artist}</h1>
-            <h3>Albums:</h3>
+            <h3 style={{textAlign:"center"}}>Albums</h3>
             <Carousel breakPoints={ breakPointsAlbums}>
                     {albums.map(album=>{
                         return <Album displayName={false} key={album.id} data={album}/>
                     })}
             </Carousel>
-            <h3>Suggested songs:</h3>
+            <h3 style={{textAlign:"center"}}>Songs</h3>
             <Carousel breakPoints={breakPointsSongs}>
                     {songs.map(song=>{
                         return <TopSong key={song.song_id} data={{...song,song_name:song.title}} displayFromHomePage={false}/>

@@ -6,6 +6,7 @@ import Song from '../Songs/Song.js';
 import RecommendedSongs from './RecommendedSongs.js';
 import './OneSongPage.css'
 import Header from '../Header.js';
+import {Link} from "react-router-dom";
 
    
 
@@ -107,8 +108,8 @@ const firstSong = React. useCallback(() =>{
             {song&& 
                 <div className="videoPlayer">
                     <YouTube videoId={getVideosId()} onEnd={nextSong} opts={opts} />
-                    <div className="oneSongDetailsTitle" > {song.title} <span style={{fontSize:"0.7em"}}>{song.length}</span> </div>
-                    <div className="oneSongDetailsArtistAlbum"> {song.artist}<span>|</span><span style={{color:'white'}}>{song.album}</span></div>
+                    <div className="oneSongDetailsTitle" >{song.title} <span style={{fontSize:"0.7em"}}>{song.length}</span> </div>
+                    <div className="oneSongDetailsArtistAlbum"><Link style={{textDecoration:"none"}} to={`/artist/${song.artist_id}`}>{song.artist}</Link><span>|</span><span style={{color:'white'}}><Link style={{textDecoration:"none"}} to={`/album/${song.album_id}`}>{song.album}</Link></span></div>
                   
                     
 

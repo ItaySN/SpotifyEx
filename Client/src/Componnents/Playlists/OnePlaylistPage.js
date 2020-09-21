@@ -5,6 +5,7 @@ import Header from '../Header';
 import Song from '../Songs/Song';
 import Carousel from 'react-elastic-carousel';
 import {Link} from "react-router-dom";
+import './OnePlaylistPage.css'
 
 function OnePlaylistPage() {
     const {id} = useParams();
@@ -37,7 +38,7 @@ function OnePlaylistPage() {
         <Header/>
         <div style={{color:"white"}}>
             <h1>{playlist.name}</h1>
-            <div><img src={playlist.playlist_img}></img></div>
+            <div className="imgOnePlaylistPageDiv"><img className="imgOnePlaylistPage" src={playlist.playlist_img}></img></div>
             <Carousel breakPoints={breakPoints}>
                 {songs.map(song => {
                 return <Song key={id} data={song} displayFromAllPage={false} playlistSet={true} playlist_id={id} />

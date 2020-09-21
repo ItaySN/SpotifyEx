@@ -1,5 +1,7 @@
 .allAlbums{
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    height: 150vh;
 }
