@@ -13,6 +13,7 @@ import OneAristPage from './Componnents/Artists/OneAristPage';
 import OneAlbumPage from './Componnents/Albums/OneAlbumPage';
 import OnePlaylistPage from './Componnents/Playlists/OnePlaylistPage';
 import OneSongPage from './Componnents/Songs/OneSongPage';
+import NotFoundPage from './NotFoundPage';
 
 
 
