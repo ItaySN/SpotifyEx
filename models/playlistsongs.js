@@ -20,11 +20,11 @@ module.exports = (sequelize, DataTypes) => {
   };
   playlistSongs.init({
     playlistId: {
-      DataTypes:INTEGER,
+      type:DataTypes.INTEGER,
       field:"playlist_id"
     },
     songId: {
-      DataTypes:INTEGER,
+      type:DataTypes.INTEGER,
       field:"song_id",
     },
   }, {

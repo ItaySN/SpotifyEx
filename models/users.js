@@ -22,12 +22,12 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     isAdmin:{
-      DataTypes:BOOLEAN,
+      type:DataTypes.BOOLEAN,
       field:"is_admin",
     },
     preferences: DataTypes.JSON,
     rememberToken:{
-      DataTypes:BOOLEAN,
+      type:DataTypes.BOOLEAN,
       field:"remember_token",
     },
   }, {

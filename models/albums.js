@@ -20,14 +20,14 @@ module.exports = (sequelize, DataTypes) => {
   };
   Albums.init({
     name:{
-      DataTypes:STRING,
+      type: DataTypes.STRING,
     },
     artistId: {
-      DataTypes:INTEGER,
+      type:DataTypes.INTEGER,
       field:"artist_id"
     },
     albumImg:{
-      DataTypes:STRING,
+      type:DataTypes.STRING,
       field:"album_img"
     } ,
   }, {

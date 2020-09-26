@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   Artists.init({
     name: DataTypes.STRING,
     artistImg:{
-      DataTypes:STRING,
+      type: DataTypes.STRING,
       field:"artist_img",
     }, 
   }, {

@@ -20,21 +20,21 @@ module.exports = (sequelize, DataTypes) => {
   };
   interactions.init({
     userId:{
-      DataTypes:INTEGER,
+      type: DataTypes.INTEGER,
       field:"user_id"
     }, 
       
     songId: {
-      DataTypes:INTEGER,
+      type:DataTypes.INTEGER,
       field:"song_id",
     },
     isLiked:{
-      DataTypes:BOOLEAN,
+      type:DataTypes.BOOLEAN,
       field:"is_liked",
     },
     
     playCount: {
-      DataTypes:INTEGER,
+      type:DataTypes.INTEGER,
       field:"play_count"
   },
   }, {
