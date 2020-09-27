@@ -3,82 +3,88 @@ const { Artists } = require('../models');
 
 const router = Router();
 
-router.get('/artists',(req,res)=>{
-    let sql =`SELECT id,name,cover_img AS artist_img FROM artists ORDER BY name`;
-    db.query(sql,(err,result) =>{
-        if(err) return result.status(400).send(err.message);
-        console.log(result);
-        res.send(result);
-    })
+router.get('/', async (req, res) => {
+    try {
+        const artists = await Artists.findAll();
+        res.send(artists);
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+
 })
 
-router.get('/artists/:id', (req,res) => {
-    console.log(req.params.id)
-    let sql = `select songs.*,artists.name AS artist,albums.name AS album,artists.cover_img AS artist_img,albums.cover_img AS album_img
-     from songs
-      join artists on songs.artist_id=artists.id
-       join albums on songs.album_id=albums.id
-        where songs.artist_id = ${req.params.id}`;
-    db.query(sql, (err,result) => {
-        // if(err) return res.status(400).send(err.message);
-        if(err) console.log(err.message);
-        console.log(result);
-        res.send(result);
-    }); 
+// router.get('/artists/:id', (req,res) => {
+//     console.log(req.params.id)
+//     let sql = `select songs.*,artists.name AS artist,albums.name AS album,artists.cover_img AS artist_img,albums.cover_img AS album_img
+//      from songs
+//       join artists on songs.artist_id=artists.id
+//        join albums on songs.album_id=albums.id
+//         where songs.artist_id = ${req.params.id}`;
+//     db.query(sql, (err,result) => {
+//         // if(err) return res.status(400).send(err.message);
+//         if(err) console.log(err.message);
+//         console.log(result);
+//         res.send(result);
+//     }); 
+// });
+
+router.post('/', async (req, res) => {
+    try {
+        let newArtist = await Artists.create(req.body);
+        res.send(newArtist);
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+
 });
 
-router.post('/artist' , (req,res) => {
-    let body = req.body;
-    let sql = `INSERT INTO artists SET ?`
-    let newArtist = 
-    {
-        "name" : body.name,
-        "cover_img": body.cover_img,
-        "upload_at": body.upload_at
-    };
-    db.query(sql,newArtist,(err,result) => {
-        if(err) return res.status(400).send(err.message);
-         return res.status(201).json(body);
-    })
-});
-
-router.put('/artist/:id' , (req,res) => {
-    let body = req.body;
-    let sql = `Update artists SET ? WHERE id = ${req.params.id}`; 
-    db.query(sql,body,(err,result) => {
-        if(err) throw err;
-        return res.status(204).end();
-    })
-});
-
-router.delete('/artists/:id' , (req,res) => {
-    let body = req.body;
-    let sql = `DELETE FROM artists WHERE id = ${req.params.id}`;
-    db.query(sql,(err,result) => {
-        if(err){
-            if(err.errno===1452){
-                return res.status(404).send("an invalid artist or album id's has been submited")
-            }
-            else{
-                return res.status(400).send(err.message);
-            }
+router.put('/:id', async (req, res) => {
+    try {
+        const updateArtist = await Artists.update(req.body, { where: { id: req.params.id } });
+        if (updateArtist[0]) {
+            res.status(201).send(`update artist: ${req.params.id}`);
         }
-        else{
-            return res.status(204).end();
+        else {
+            res.send(`No update`);
         }
-    });
+    }
+    catch (err) {
+        res.status(500).send(err.message);
+    }
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const updateArtist = await Artists.destroy({ where: { id: req.params.id } });
+        res.json(updateArtist);
+
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
 })
 
-router.get('/top_artists', (req,res) => {
-    let sql = `SELECT artists.id ,artists.name As artist,artists.cover_img AS artist_img,SUM(play_count) AS Num_Of_Listening FROM interactions JOIN songs ON songs.id = interactions.song_id JOIN artists ON artists.id = songs.artist_id GROUP by artist_id ORDER BY Num_Of_Listening DESC Limit 5`;
-    db.query(sql,(err,result) =>{
-        if(err){
-            return res.status(400).send(err.message);
+router.get('/:id', async (req, res) => {
+    try {
+        const artist = await Artists.findByPk(req.params.id);
+        if (!artist) {
+            res.status(404).send("album not found")
         }
-        else{
-            res.send(result);
-        }
-    })    
-})
+        res.send(artist);
+
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+});
+// router.get('/top_artists', (req,res) => {
+//     let sql = `SELECT artists.id ,artists.name As artist,artists.cover_img AS artist_img,SUM(play_count) AS Num_Of_Listening FROM interactions JOIN songs ON songs.id = interactions.song_id JOIN artists ON artists.id = songs.artist_id GROUP by artist_id ORDER BY Num_Of_Listening DESC Limit 5`;
+//     db.query(sql,(err,result) =>{
+//         if(err){
+//             return res.status(400).send(err.message);
+//         }
+//         else{
+//             res.send(result);
+//         }
+//     })    
+// })
 
 module.exports = router;

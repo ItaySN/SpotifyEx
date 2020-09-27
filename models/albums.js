@@ -1,14 +1,36 @@
+const {Interactions} = require('../models');
+const { Songs } = require('../models');
+
 'use strict';
 const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Albums extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+    
+   static async getTotalSongsPlays() {
+     try{
+       const albums = await this.findAll({
+         include: [
+           {
+             model: Songs,
+             include: [
+               {
+                 models: Interactions,
+                 attributes: [sequelize.fn('sum', sequelize.col('play_count')), 'total_plays']
+               }
+             ]
+           }
+         ]
+       });
+       console.log(albums);
+     }
+     catch(err){
+       console.log(err);
+     }
+    }
+
+
     static associate(models) {
       this.hasMany(models.Songs,{
         foreignKey:"albumId",
