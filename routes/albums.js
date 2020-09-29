@@ -2,7 +2,8 @@ const { Router } = require('express');
 const { Albums } = require('../models');
 const {Interactions} = require('../models');
 const {Songs} = require('../models');
-
+const {Op, Model} = require('Sequelize')
+const {Artists} = require('../models');
 
 
 
@@ -63,27 +64,42 @@ router.get('/restore/:id' , async (req,res) => {
     }
 })
 
-// router.get('/top' ,async (req,res) => {
-//     try{
-//         Albums.getTotalSongsPlays();
-//     res.send("ok");
-//     }catch(err){
-//         console.log(err)
-//     }
-// })
-
-router.get('/:id', async (req, res) => {
-    try {
-        const album = await Albums.findByPk(req.params.id);
-        if (!album) {
-            res.status(404).send("album not found")
-        }
-        res.send(album);
-
-    } catch (err) {
-        res.status(500).send(err.message);
+router.get('/top' ,async (req,res) => {
+    try{
+    const albumsIds = await Albums.getTotalSongsPlays(Songs,Interactions);
+    const albums = await Albums.findAll({
+        where:{
+            id: {
+                [Op.or]: [...albumsIds],
+            }
+        },
+        include:[
+            {
+                model:Artists,
+                attributes:[
+                    "name"
+                ]       
+            }
+        ]
+    })
+    res.send(albums);
+    }catch(err){
+        console.log(err)
     }
-});
+})
+
+// router.get('/:id', async (req, res) => {
+//     try {
+//         const album = await Albums.findByPk(req.params.id);
+//         if (!album) {
+//             res.status(404).send("album not found")
+//         }
+//         res.send(album);
+
+//     } catch (err) {
+//         res.status(500).send(err.message);
+//     }
+// });
 
 
 // router.get('/top_albums', (req,res) => {

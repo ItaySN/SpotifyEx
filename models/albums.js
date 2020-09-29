@@ -1,6 +1,3 @@
-const {Interactions} = require('../models');
-const { Songs } = require('../models');
-
 'use strict';
 const {
   Model
@@ -8,23 +5,49 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Albums extends Model {
     
-   static async getTotalSongsPlays() {
+   static async getTotalSongsPlays(Songs,Interactions) {
      try{
        const albums = await this.findAll({
          include: [
            {
-             model: Songs,
-             include: [
-               {
-                 models: Interactions,
-                 attributes: [sequelize.fn('sum', sequelize.col('play_count')), 'total_plays']
-               }
-             ]
+              model: Songs,
+              attributes:[
+                "id"
+              ],
+              include: [
+                {
+                  model: Interactions,
+                  attributes: [
+                      "playCount"
+                  ]
+                }
+              ]
            }
+         ],
+         attributes:[
+           "id",
+           "name"
          ]
        });
-       console.log(albums);
-     }
+       const albumsRate = [];
+       for (let album of albums) {
+         let sum = 0
+         for (let song of album.Songs) {
+           for (let interaction of song.Interactions) {
+             sum += interaction.playCount
+           }
+         }
+         albumsRate.push([album.id, sum])
+       }
+       albumsRate.sort((a, b) => {
+         return b[1] - a[1];
+       }) 
+       const albumIds = []
+       for (let album of albumsRate.slice(0, 2)) {
+         albumIds.push(album[0])
+       }
+        return(albumIds);
+      }
      catch(err){
        console.log(err);
      }
