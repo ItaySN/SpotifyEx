@@ -1,5 +1,7 @@
 const { Router } = require('express');
 const { Songs } = require('../models');
+const { Interactions } = require('../models');
+const { Op, Model } = require('Sequelize')
 
 const router = Router();
 
@@ -48,6 +50,22 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+router.get('/top', async (req, res) => {
+    try {
+        const songsIds = await Songs.topSongs(Interactions);
+        const songs = await Songs.findAll({
+            where: {
+                id: {
+                    [Op.or]: [...songsIds],
+                }
+            },
+        })
+        res.send(songs);
+    } catch (err) {
+        console.log(err)
+    }
+})
+
 router.get('/:id', async (req, res) => {
     try {
         const song = await Songs.findByPk(req.params.id);
@@ -60,8 +78,6 @@ router.get('/:id', async (req, res) => {
         res.status(500).send(err.message);
     }
 });
-
-
 
 // router.get("/songs",(req,res)=>{
 //     let sql = `SELECT songs.*,albums.name As album, albums.cover_img as album_img,artists.cover_img AS artist_img, artists.name As artist FROM songs Join artists ON artists.id = songs.artist_id JOIN albums ON albums.id = songs.album_id ORDER BY songs.id`;

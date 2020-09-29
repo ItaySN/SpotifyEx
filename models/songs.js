@@ -4,11 +4,43 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Songs extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+    static async topSongs(Interactions) {
+      try {
+        const songs = await this.findAll({
+          include: [
+            {
+              include: [
+                {
+                  model: Interactions,
+                  attributes: [
+                    "playCount"
+                  ]
+                }
+              ]
+            }
+          ],
+        });
+        const songsRate = [];
+        for(let song of songs){
+          let sum = 0
+          for(let interaction of song.Interaction){
+            sum+= interaction.playCount
+          }
+          songsRate.push([song.id,sum])
+        }
+        songsRate.sort((a, b) => {
+          return b[1] - a[1];
+        })
+        const songsIds = []
+        for (let song of songsRate.slice(0, 2)) {
+          songsIds.push(song[0])
+        }
+        return (songsIds);
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
     static associate(models) {
       this.hasMany(models.PlaylistSongs,
         {

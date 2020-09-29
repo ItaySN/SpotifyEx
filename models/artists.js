@@ -48,7 +48,32 @@ module.exports = (sequelize, DataTypes) => {
         console.log(err);
       }
     }
-
+    
+    static async songsByArtist(Songs,Albums,id){
+      try{
+        const songs = await this.findByPk(id, {
+          include:[
+            {
+              model:Songs,
+              include:[
+                {
+                  model:Albums,
+                  attributes:[
+                    "id",
+                    "name",
+                    "albumImg"
+                  ],
+                }
+              ],
+            }
+          ]
+        })
+        return(songs);
+      }catch (err) {
+        console.log(err);
+      }
+      
+    }
 
     static associate(models) {
       this.hasMany(models.Songs,

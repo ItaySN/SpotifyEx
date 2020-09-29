@@ -2,6 +2,7 @@ const { Router } = require('express');
 const { Artists } = require('../models');
 const { Interactions } = require('../models');
 const { Songs } = require('../models');
+const { Albums } = require('../models');
 const { Op, Model } = require('Sequelize')
 
 const router = Router();
@@ -82,6 +83,16 @@ router.get('/top', async (req, res) => {
         res.send(artists);
     } catch (err) {
         console.log(err)
+    }
+})
+
+router.get('/songsByArtist/:id', async (req,res) => {
+    try{
+        const id = req.params.id;
+        const songs = await Artists.songsByArtist(Songs,Albums,id)
+        res.send(songs)
+    }catch(err){
+        res.status(500).send(err.message);
     }
 })
 
