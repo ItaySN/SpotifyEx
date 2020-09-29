@@ -4,11 +4,52 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Artists extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+    
+    static async topArtists(Songs, Interactions) {
+      try {
+        const artists = await this.findAll({
+          include: [
+            {
+              model: Songs,
+              attributes: [
+                "id"
+              ],
+              include: [
+                {
+                  model: Interactions,
+                  attributes: [
+                    "playCount"
+                  ]
+                }
+              ]
+            }
+          ],
+        });
+        const artistRate = [];
+        for (let artist of artists) {
+          let sum = 0
+          for (let song of artist.Songs) {
+            for (let interaction of song.Interactions) {
+              sum += interaction.playCount
+            }
+          }
+          artistRate.push([artist.id, sum])
+        }
+        artistRate.sort((a, b) => {
+          return b[1] - a[1];
+        })
+        const artistsId = []
+        for (let artist of artistRate.slice(0, 2)) {
+          artistsId.push(artist[0])
+        }
+        return (artistsId);
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+
+
     static associate(models) {
       this.hasMany(models.Songs,
         {

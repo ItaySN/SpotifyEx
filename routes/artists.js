@@ -1,5 +1,8 @@
 const { Router } = require('express');
 const { Artists } = require('../models');
+const { Interactions } = require('../models');
+const { Songs } = require('../models');
+const { Op, Model } = require('Sequelize')
 
 const router = Router();
 
@@ -12,6 +15,9 @@ router.get('/', async (req, res) => {
     }
 
 })
+
+
+
 
 // router.get('/artists/:id', (req,res) => {
 //     console.log(req.params.id)
@@ -63,6 +69,22 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+router.get('/top', async (req, res) => {
+    try {
+        const artistsId = await Artists.topArtists(Songs, Interactions);
+        const artists = await Artists.findAll({
+            where: {
+                id: {
+                    [Op.or]: [...artistsId],
+                }
+            },
+        })
+        res.send(artists);
+    } catch (err) {
+        console.log(err)
+    }
+})
+
 router.get('/:id', async (req, res) => {
     try {
         const artist = await Artists.findByPk(req.params.id);
@@ -75,6 +97,7 @@ router.get('/:id', async (req, res) => {
         res.status(500).send(err.message);
     }
 });
+
 // router.get('/top_artists', (req,res) => {
 //     let sql = `SELECT artists.id ,artists.name As artist,artists.cover_img AS artist_img,SUM(play_count) AS Num_Of_Listening FROM interactions JOIN songs ON songs.id = interactions.song_id JOIN artists ON artists.id = songs.artist_id GROUP by artist_id ORDER BY Num_Of_Listening DESC Limit 5`;
 //     db.query(sql,(err,result) =>{
