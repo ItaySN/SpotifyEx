@@ -1,6 +1,8 @@
 const { Router } = require('express');
 const { Songs } = require('../models');
 const { Interactions } = require('../models');
+const { Artists } = require('../models');
+const { Albums } = require('../models');
 const { Op, Model } = require('Sequelize')
 
 const router = Router();
@@ -50,17 +52,26 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+// router.get('/top', async (req, res) => {
+//     try {
+//         const songsIds = await Songs.topSongs(Interactions,Artists,Albums);
+//         const songs = await Songs.findAll({
+//             where: {
+//                 id: {
+//                     [Op.or]: [...songsIds],
+//                 }
+//             },
+//         })
+//         res.send(songs);
+//     } catch (err) {
+//         console.log(err)
+//     }
+// })
+
 router.get('/top', async (req, res) => {
     try {
         const songsIds = await Songs.topSongs(Interactions);
-        const songs = await Songs.findAll({
-            where: {
-                id: {
-                    [Op.or]: [...songsIds],
-                }
-            },
-        })
-        res.send(songs);
+        res.send(songsIds);
     } catch (err) {
         console.log(err)
     }

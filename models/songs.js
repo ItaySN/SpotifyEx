@@ -6,31 +6,32 @@ module.exports = (sequelize, DataTypes) => {
   class Songs extends Model {
     static async topSongs(Interactions) {
       try {
+        console.log('started --------')
         const songs = await this.findAll({
           include: [
             {
-              include: [
-                {
-                  model: Interactions,
-                  attributes: [
-                    "playCount"
-                  ]
-                }
-              ]
+              model: Interactions,
+              attributes: [
+                "playCount"
+              ],
             }
           ],
         });
         const songsRate = [];
         for(let song of songs){
-          let sum = 0
-          for(let interaction of song.Interaction){
-            sum+= interaction.playCount
+          console.log('for loop 1 -----------')
+          let playCount;
+          for(let interaction of song.Interactions){
+            console.log('for loop 2 --------');
+            playCount = interaction.playCount || 0 ;
           }
-          songsRate.push([song.id,sum])
+          songsRate.push([song.id,playCount])
+          console.log('songs rate ' , songsRate);
         }
         songsRate.sort((a, b) => {
           return b[1] - a[1];
         })
+        console.log('sorted ---------')
         const songsIds = []
         for (let song of songsRate.slice(0, 2)) {
           songsIds.push(song[0])

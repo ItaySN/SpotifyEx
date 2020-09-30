@@ -63,7 +63,7 @@ module.exports = (sequelize, DataTypes) => {
                 {
                   model: Artists,
                   attributes: [
-                    "id",
+                    ["id","artist_id"],
                     "name",
                     "artistImg",
                   ]

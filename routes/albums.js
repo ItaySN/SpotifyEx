@@ -99,19 +99,6 @@ router.get('/songsByAlbum/:id', async (req,res) => {
     }
 })
 
-
-// router.get('/songs_ByAlbum/:id',(req,res) =>{
-//     let sql =`SELECT songs.*,albums.name As album, albums.cover_img as album_img
-// ,artists.cover_img AS artist_img,artists.name As artist FROM songs
-// Join artists ON artists.id = songs.artist_id
-// JOIN albums ON albums.id = songs.album_id 
-// WHERE songs.album_id = ${req.params.id}`;
-//     let query = db.query(sql,(err,result) =>{
-//         if(err) return res.status(400).send(err.message);
-//         res.send(result);
-//     })
-// });
-
 router.get('/:id', async (req, res) => {
     try {
         const album = await Albums.findByPk(req.params.id);
@@ -124,7 +111,5 @@ router.get('/:id', async (req, res) => {
         res.status(500).send(err.message);
     }
 });
-
-
 
 module.exports = router;

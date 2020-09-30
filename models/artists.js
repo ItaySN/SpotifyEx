@@ -72,7 +72,6 @@ module.exports = (sequelize, DataTypes) => {
       }catch (err) {
         console.log(err);
       }
-      
     }
 
     static associate(models) {

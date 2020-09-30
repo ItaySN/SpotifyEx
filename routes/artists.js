@@ -17,24 +17,6 @@ router.get('/', async (req, res) => {
 
 })
 
-
-
-
-// router.get('/artists/:id', (req,res) => {
-//     console.log(req.params.id)
-//     let sql = `select songs.*,artists.name AS artist,albums.name AS album,artists.cover_img AS artist_img,albums.cover_img AS album_img
-//      from songs
-//       join artists on songs.artist_id=artists.id
-//        join albums on songs.album_id=albums.id
-//         where songs.artist_id = ${req.params.id}`;
-//     db.query(sql, (err,result) => {
-//         // if(err) return res.status(400).send(err.message);
-//         if(err) console.log(err.message);
-//         console.log(result);
-//         res.send(result);
-//     }); 
-// });
-
 router.post('/', async (req, res) => {
     try {
         let newArtist = await Artists.create(req.body);
