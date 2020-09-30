@@ -71,7 +71,32 @@ router.delete('/:id', async (req, res) => {
 router.get('/top', async (req, res) => {
     try {
         const songsIds = await Songs.topSongs(Interactions);
-        res.send(songsIds);
+        const songs = await Songs.findAll({
+            where: {
+                id: {
+                    [Op.or]: [...songsIds],
+                }
+            },
+            include: [
+                {
+                    model: Artists,
+                    attributes: [
+                        "id",
+                        "name",
+                        "artist_img"
+                    ],
+                },
+                {
+                    model: Albums,
+                    attributes: [
+                        "id",
+                        "name",
+                        "albumImg",
+                    ],
+                },
+            ],
+        })
+        res.send(songs);
     } catch (err) {
         console.log(err)
     }
