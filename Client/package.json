@@ -23,7 +23,7 @@
     "save": "^2.4.0",
     "styled-components": "^5.2.0"
   },
-  "proxy": "http://localhost:8080/",
+  "proxy": "http://localhost:8585/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

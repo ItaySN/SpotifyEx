@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
        });
        const albumsRate = [];
        for (let album of albums) {
-         let sum = 0
+         let sum = 0;
          for (let song of album.Songs) {
            for (let interaction of song.Interactions) {
              sum += interaction.playCount
