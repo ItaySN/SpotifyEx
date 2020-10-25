@@ -11,16 +11,18 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      playlistImg: {
-        type: Sequelize.STRING
+      playlist_img: {
+        type: Sequelize.TEXT
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       }
     });
   },

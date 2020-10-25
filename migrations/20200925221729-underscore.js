@@ -27,7 +27,7 @@ module.exports = {
       allowNull: true,
       validate: {},
     });
-    await queryInterface.addColumn("playlistsongs", "deleted_at", {
+    await queryInterface.addColumn("playlist_songs", "deleted_at", {
       type: Sequelize.DATE,
       allowNull: true,
       validate: {},
@@ -44,7 +44,7 @@ module.exports = {
     await queryInterface.removeColumn("artists", "deleted_at");
     await queryInterface.removeColumn("interactions", "deleted_at");
     await queryInterface.removeColumn("playlists", "deleted_at");
-    await queryInterface.removeColumn("playlistsongs", "deleted_at");
+    await queryInterface.removeColumn("playlist_songs", "deleted_at");
     await queryInterface.removeColumn("users", "deleted_at");
     await queryInterface.removeColumn("songs", "deleted_at");
 

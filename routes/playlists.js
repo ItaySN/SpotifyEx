@@ -1,5 +1,12 @@
 const { Router } = require('express');
 const { Playlists } = require('../models');
+const { Interactions } = require('../models');
+const { PlaylistSongs } = require('../models');
+const { Songs } = require('../models');
+const { Artists } = require('../models');
+const { Albums } = require('../models');
+const { Op, Model } = require('Sequelize')
+
 
 const router = Router();
 
@@ -48,6 +55,57 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+router.get('/songsByPlaylist/:id', async (req,res) => {
+    try{
+        const id = req.params.id;
+        const songs = await PlaylistSongs.songsByPlaylist(Songs,Artists,Albums,id)
+        res.send(songs)
+    }catch(err){
+        res.status(500).send(err.message);
+    }
+})
+
+router.get('/top', async (req, res) => {
+    try {
+        const playlistsId = await PlaylistSongs.topPlaylists(Playlists,Songs,Interactions);
+        const playlists = await Playlists.findAll({
+            where: {
+                id: {
+                    [Op.or]: [...playlistsId],
+                }
+            },
+            // include: [
+            //     {
+            //         model: Songs,
+            //         include: [
+            //             {
+            //                 model: Artists,
+            //                 attributes: [
+            //                     "id",
+            //                     "name",
+            //                     "artistImg",
+            //                 ],
+            //                 include: [
+            //                     {
+            //                         model: Albums,
+            //                         attributes: [
+            //                             "id",
+            //                             "name",
+            //                             "albumImg",
+            //                         ],
+            //                     }
+            //                 ],
+            //             }
+            //         ]
+            //     }
+            // ],
+        })
+        res.send(playlists);
+    } catch (err) {
+        console.log(err)
+    }
+})
+
 router.get('/:id', async (req, res) => {
     try {
         const playlist = await Playlists.findByPk(req.params.id);
@@ -60,17 +118,5 @@ router.get('/:id', async (req, res) => {
         res.status(500).send(err.message);
     }
 });
-
-router.get('/top_playlists', (req,res) => {
-    let sql = `SELECT  playlist_songs.playlist_id,playlists.name AS playlist,SUM(interactions.play_count) AS Num_Of_Listenings, playlists.cover_img AS playlist_img  FROM playlist_songs JOIN interactions ON interactions.id = playlist_songs.song_id JOIN playlists ON playlists.id = playlist_songs.playlist_id GROUP BY playlist_id ORDER BY- Num_Of_Listenings LIMIT 5`;
-    db.query(sql,(err,result) =>{
-        if(err){
-            return res.status(400).send(err.message);
-        }
-        else{
-            res.send(result);
-        }
-    })
-})
 
 module.exports = router;

@@ -17,22 +17,24 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
-      isAdmin: {
+      is_admin: {
         type: Sequelize.BOOLEAN
       },
       preferences: {
         type: Sequelize.JSON
       },
-      rememberToken: {
+      remember_token: {
         type: Sequelize.BOOLEAN
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       }
     });
   },
