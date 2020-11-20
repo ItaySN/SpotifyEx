@@ -19,12 +19,12 @@ module.exports = {
         type: Sequelize.TEXT
       },
       created_at: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now')
       },
       updated_at: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now')
       }

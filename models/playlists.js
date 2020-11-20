@@ -56,11 +56,13 @@ module.exports = (sequelize, DataTypes) => {
     //   }
     // }
 
-    
-    static associate(models) {
-      this.hasMany(models.PlaylistSongs,{
-        foreignKey:"playlistId"
-      })
+        static associate(models) {
+      this.belongsToMany(models.PlaylistSongs,
+        {
+          through: model.PlaylistSongs,
+          foreignKey:"playlistId",
+          onDelete="CASCADE"
+        });
     }
   };
   Playlists.init({

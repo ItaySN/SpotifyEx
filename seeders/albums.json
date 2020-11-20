@@ -1,6 +1,6 @@
-[{"artist_id":3, "name":"Layla Keyom Yair", "cover_img":"https://www.eviatarbanai.co.il/f-users/user_102191/website_102420/images/thumbs/W_960_0_071.jpg"},
- {"artist_id":2, "name":"Nagat Li Balev", "cover_img":"https://upload.wikimedia.org/wikipedia/he/c/c6/Nagtlibalev.jpg"},
- {"artist_id":4, "name":"Scorpion", "cover_img":"https://theartsdesk.com/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/mastimages/drake%20scorpion.png?itok=ADy9gtDp"},
- {"artist_id":5, "name":"Divide", "cover_img":"https://img.discogs.com/HqrnHRdS6LmuHKpuHpH5aEee2_Y=/fit-in/600x574/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11325144-1584310645-7958.jpeg.jpg"},
- {"artist_id":6, "name":"Beauty Behind the Madness", "cover_img":"https://upload.wikimedia.org/wikipedia/he/f/fb/The_Weeknd_Beauty_Behind_The_Madness.jpg"},
- {"artist_id":1, "name":"A Night At The Opera", "cover_img":"https://upload.wikimedia.org/wikipedia/ru/4/41/A_Night_At_The_Opera%28Queen%29.jpg"}]
+[{"artist_id":3, "name":"Layla Keyom Yair", "album_img":"https://www.eviatarbanai.co.il/f-users/user_102191/website_102420/images/thumbs/W_960_0_071.jpg"},
+ {"artist_id":2, "name":"Nagat Li Balev", "album_img":"https://upload.wikimedia.org/wikipedia/he/c/c6/Nagtlibalev.jpg"},
+ {"artist_id":4, "name":"Scorpion", "album_img":"https://theartsdesk.com/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/mastimages/drake%20scorpion.png?itok=ADy9gtDp"},
+ {"artist_id":5, "name":"Divide", "album_img":"https://img.discogs.com/HqrnHRdS6LmuHKpuHpH5aEee2_Y=/fit-in/600x574/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-11325144-1584310645-7958.jpeg.jpg"},
+ {"artist_id":6, "name":"Beauty Behind the Madness", "album_img":"https://upload.wikimedia.org/wikipedia/he/f/fb/The_Weeknd_Beauty_Behind_The_Madness.jpg"},
+ {"artist_id":1, "name":"A Night At The Opera", "album_img":"https://upload.wikimedia.org/wikipedia/ru/4/41/A_Night_At_The_Opera%28Queen%29.jpg"}]

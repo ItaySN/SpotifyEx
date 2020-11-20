@@ -92,9 +92,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       this.belongsTo(models.Songs,{
         foreignKey:"songId",
+        onDelete="CASCADE"
+
       })
       this.belongsTo(models.Playlists,{
         foreignKey:"playlistId",
+        onDelete="CASCADE"
       })
     }
   };

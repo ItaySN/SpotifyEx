@@ -1,2 +1,2 @@
-[{"name":"Itay Sasson", "email":"itay@fdgdg.com", "password":"123456", "is_admin":"1\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000", "preferences":, "remember_token":0},
- {"name":"Avi Asulin", "email":"avi@gggg.com", "password":"159753", "is_admin":"0\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000", "preferences":, "remember_token":0}]
+[{"name":"Itay Sasson", "email":"itay@fdgdg.com", "password":"123456", "is_admin":true, "preferences":null, "remember_token":0},
+ {"name":"Avi Asulin", "email":"avi@gggg.com", "password":"159753", "is_admin":false, "preferences":null, "remember_token":0}]

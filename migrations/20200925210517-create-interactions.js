@@ -15,18 +15,21 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       is_liked: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue:false
       },
       play_count: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull:true,
+        defaultValue:0
       },
       created_at: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now')
       },
       updated_at: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now')
       }

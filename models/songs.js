@@ -43,10 +43,6 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
     static associate(models) {
-      this.hasMany(models.PlaylistSongs,
-        {
-          foreignKey:"songId",
-        });
       this.hasMany(models.Interactions,
         {
           foreignKey:"songId",
@@ -54,11 +50,19 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Artists,
         {
           foreignKey:"artistId",
+          onDelete="CASCADE"
         });
         this.belongsTo(models.Albums,
           {
             foreignKey:"albumId",
+            onDelete="CASCADE"
           });
+      this.belongsToMany(models.PlaylistSongs,
+        {
+          through: model.PlaylistSongs,
+          foreignKey:"songId",
+          onDelete="CASCADE"
+        });
     }
   };
   Songs.init({

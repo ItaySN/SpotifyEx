@@ -1,9 +1,8 @@
 'use strict';
-const interactions = require('./interactions.json')
-
+const songs = require('./songs.json')
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert("interactions",interactions);
+    await queryInterface.bulkInsert("songs",songs);
   },
 
   down: async (queryInterface, Sequelize) => {

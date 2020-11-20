@@ -79,13 +79,13 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
 
-
     static associate(models) {
       this.hasMany(models.Songs,{
         foreignKey:"albumId",
       });
       this.belongsTo(models.Artists,{
         foreignKey:"artistId",
+        onDelete="CASCADE"
       });
     }
   };

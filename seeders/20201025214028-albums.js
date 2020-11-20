@@ -1,16 +1,9 @@
 'use strict';
+const albums = require('./albums.json')
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+    await queryInterface.bulkInsert("albums",albums);
   },
 
   down: async (queryInterface, Sequelize) => {

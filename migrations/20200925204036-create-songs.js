@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Songs', {
@@ -9,24 +10,30 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false
       },
       album_id: {
         type: Sequelize.INTEGER
       },
-      artistid: {
+      artist_id: {
         type: Sequelize.INTEGER
       },
       youtube_link: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false
+      },
+      length:{
+        type: Sequelize.TIME,
+        allowNull:false
       },
       created_at: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now')
       },
       updated_at: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now')
       }
