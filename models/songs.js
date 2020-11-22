@@ -6,7 +6,6 @@ module.exports = (sequelize, DataTypes) => {
   class Songs extends Model {
     static async topSongs(Interactions) {
       try {
-        console.log('started --------')
         const songs = await this.findAll({
           include: [
             {
@@ -19,19 +18,15 @@ module.exports = (sequelize, DataTypes) => {
         });
         const songsRate = [];
         for(let song of songs){
-          console.log('for loop 1 -----------')
           let playCount;
           for(let interaction of song.Interactions){
-            console.log('for loop 2 --------');
             playCount = interaction.playCount || 0 ;
           }
           songsRate.push([song.id,playCount])
-          console.log('songs rate ' , songsRate);
         }
         songsRate.sort((a, b) => {
           return b[1] - a[1];
         })
-        console.log('sorted ---------')
         const songsIds = []
         for (let song of songsRate.slice(0, 2)) {
           songsIds.push(song[0])
@@ -50,18 +45,18 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.Artists,
         {
           foreignKey:"artistId",
-          onDelete="CASCADE"
+          onDelete:"CASCADE"
         });
         this.belongsTo(models.Albums,
           {
             foreignKey:"albumId",
-            onDelete="CASCADE"
+            onDelete:"CASCADE"
           });
-      this.belongsToMany(models.PlaylistSongs,
+      this.belongsToMany(models.Playlists,
         {
-          through: model.PlaylistSongs,
+          through: models.PlaylistSongs,
           foreignKey:"songId",
-          onDelete="CASCADE"
+          onDelete:"CASCADE"
         });
     }
   };

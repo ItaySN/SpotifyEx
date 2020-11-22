@@ -10,14 +10,14 @@ function Album({data,displayName=true}) {
                 {data &&
                     displayName ?
                         <div className="oneAlbum">
-                            <div className="allAlbumsImgDiv"><Link style={{textDecoration:"none"}} to={`/album/${data.id}`}><img className="allAlbumsCoverImg" src={data.cover_img}></img></Link></div>
+                            <div className="allAlbumsImgDiv"><Link style={{textDecoration:"none"}} to={`/album/${data.id}`}><img className="allAlbumsCoverImg" src={data.albumImg}></img></Link></div>
                             <h4 className="allAlbumsNameP"><Link style={{textDecoration:"none"}} to={`/album/${data.id}`}>{data.name}</Link></h4>
                             {displayName&&
-                            <p key={data.artist_id} className="allAbumsArtistP"><Link style={{textDecoration:"none"}} to={`/artist/${data.artist_id}`}>{data.artist}</Link></p>
+                            <p key={data.artistId} className="allAbumsArtistP"><Link style={{textDecoration:"none"}} to={`/artist/${data.artistId}`}>{data.artist.name}</Link></p>
                             }
                         </div>
                     : <div className="oneAlbumNoAllAlbums">
-                            <div className="NoAllAlbumsImgDiv"><Link style={{textDecoration:"none"}} to={`/album/${data.id}`}><img className="NoallAlbumsCoverImg" src={data.cover_img}></img></Link></div>
+                            <div className="NoAllAlbumsImgDiv"><Link style={{textDecoration:"none"}} to={`/album/${data.id}`}><img className="NoallAlbumsCoverImg" src={data.albumImg}></img></Link></div>
                             <h4 className="NoAllAlbumsNameP"><Link style={{textDecoration:"none"}} to={`/album/${data.id}`}>{data.name}</Link></h4>
                         </div>
                 }

@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
          return b[1] - a[1];
        }) 
        const albumIds = []
-       for (let album of albumsRate.slice(0, 2)) {
+       for (let album of albumsRate.slice(0, 3)) {
          albumIds.push(album[0])
        }
         return(albumIds);
@@ -85,7 +85,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       this.belongsTo(models.Artists,{
         foreignKey:"artistId",
-        onDelete="CASCADE"
+        onDelete:"CASCADE"
       });
     }
   };

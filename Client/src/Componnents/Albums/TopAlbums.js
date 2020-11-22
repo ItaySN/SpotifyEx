@@ -11,7 +11,7 @@ const [topAlbums,setTopAlbums] = useState([]);
 
 const getTopAlbums = async () => {
     try{
-        const res = await axios.get('/top_albums');
+        const res = await axios.get('/albums/top');
         setTopAlbums(res.data);
     }catch(err){
         console.error(err.message);

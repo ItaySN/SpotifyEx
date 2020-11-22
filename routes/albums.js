@@ -12,7 +12,17 @@ const router = Router();
 
 router.get('/',async (req,res) => {
     try{
-        const albums = await Albums.findAll();
+        const albums = await Albums.findAll({
+            include:[
+            {
+                model:Artists,
+                attributes:[
+                    "name",
+                    "artist_img"
+                ]       
+            }
+        ]
+        });
         res.send(albums);
     }catch(err){
         res.status(500).send(err.message);
