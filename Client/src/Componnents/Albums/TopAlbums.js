@@ -35,7 +35,7 @@ const breakPoints = [
            <h3 style={{display:"flex", alignItems:"flex-start"}}>Top Albums <AlbumIcon style={{height:"5vh",color:"rgb(206, 148, 148)"}}/></h3>
             <Carousel  color="white" breakPoints={breakPoints}>
             {topAlbums.map(album =>{
-                return <TopAlbum key={album.album_id} data={album}/>
+                return <TopAlbum key={album.albumId} data={album}/>
             })}
             </Carousel>
         </div>

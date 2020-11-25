@@ -13,7 +13,7 @@ function Album({data,displayName=true}) {
                             <div className="allAlbumsImgDiv"><Link style={{textDecoration:"none"}} to={`/album/${data.id}`}><img className="allAlbumsCoverImg" src={data.albumImg}></img></Link></div>
                             <h4 className="allAlbumsNameP"><Link style={{textDecoration:"none"}} to={`/album/${data.id}`}>{data.name}</Link></h4>
                             {displayName&&
-                            <p key={data.artistId} className="allAbumsArtistP"><Link style={{textDecoration:"none"}} to={`/artist/${data.artistId}`}>{data.artist.name}</Link></p>
+                            <p key={data.artistId} className="allAbumsArtistP"><Link style={{textDecoration:"none"}} to={`/artist/${data.artistId}`}>{data.Artist.name}</Link></p>
                             }
                         </div>
                     : <div className="oneAlbumNoAllAlbums">

@@ -111,7 +111,17 @@ router.get('/songsByAlbum/:id', async (req,res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const album = await Albums.findByPk(req.params.id);
+        const album = await Albums.findByPk(req.params.id,{
+        include:[
+            {
+                model:Artists,
+                attributes:[
+                    "name",
+                    "artist_img"
+                ]       
+            }
+        ]
+        });
         if (!album) {
             res.status(404).send("album not found")
         }
@@ -121,5 +131,6 @@ router.get('/:id', async (req, res) => {
         res.status(500).send(err.message);
     }
 });
+
 
 module.exports = router;

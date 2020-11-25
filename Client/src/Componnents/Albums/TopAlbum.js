@@ -5,8 +5,8 @@ import {Link} from "react-router-dom";
 function TopAlbum({data}) {
     return (
         <div className="oneTopAlbumDiv">
-            <Link style={{textDecoration:"none"}} to={`/album/${data.album_id}`}><img className="cover_TopAlbum" src={data.album_img}></img></Link>
-            <h4> <Link style={{textDecoration:"none"}} to={`/album/${data.album_id}`}>{data.album}</Link></h4>
+            <Link style={{textDecoration:"none"}} to={`/album/${data.albumId}`}><img className="cover_TopAlbum" src={data.albumImg}></img></Link>
+            <h4> <Link style={{textDecoration:"none"}} to={`/album/${data.albumId}`}>{data.name}</Link></h4>
         </div>
     )
 }
