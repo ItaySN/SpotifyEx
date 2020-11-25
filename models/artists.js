@@ -74,6 +74,26 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
 
+    static async albumsByArtist(Albums,id){
+      try{
+        const albums = this.findByPk(id,{
+          include:[
+            {
+              model:Albums,
+              attributes:[
+                "id",
+                "name",
+                "albumImg"
+              ]
+            }
+          ]
+        })
+        return albums;
+      }catch(err){
+        console.log(err.message)
+      }
+    }
+
     static associate(models) {
       this.hasMany(models.Songs,
         {

@@ -14,7 +14,7 @@ function TopArtists(){
 
     const getTopArtists = async () => {
     try {
-      const res = await axios.get('/top_artists');
+      const res = await axios.get('/artists/top');
       setTopArtists(res.data);
       console.log(res.data);
     }catch (err) {

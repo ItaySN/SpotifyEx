@@ -9,7 +9,7 @@ function Artist({data}) {
             <div className="containerOneArtist">
                 {data &&
                     <div className="oneArtist">
-                        <div className="allArtistsImgDiv"><Link style={{textDecoration:"none"}} to={`/artist/${data.id}`}><img className="allArtistsImgArtist" src={data.artist_img}></img></Link></div>
+                        <div className="allArtistsImgDiv"><Link style={{textDecoration:"none"}} to={`/artist/${data.id}`}><img className="allArtistsImgArtist" src={data.artistImg}></img></Link></div>
                         <h4 className="allArtistsNameP"><Link style={{textDecoration:"none"}} to={`/artist/${data.id}`}>{data.name}</Link> </h4>
                     </div>
                 }

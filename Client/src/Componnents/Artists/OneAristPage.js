@@ -17,12 +17,13 @@ function OneAristPage() {
     useEffect(() => {  
         (async () => {
         try{
-            const {data} = await axios.get(`/artists/${id}`);
-            setArtist(data[0]);
+            const data = await axios.get(`/artists/${id}`);
+            setArtist(data.data)
             console.log(data)
-            setSongs(data);
-            const res = await axios.get(`/albums_ByArtist/${id}`)
-            setAlbums(res.data);
+            const data2 = await axios.get(`artists/songsByArtist/${id}`)
+            setSongs(data2.data.Songs);
+            const data3 = await axios.get(`artists/albumsByArtist/${id}`)
+            setAlbums(data3.data.Albums);
         } catch (err) {
             console.error(err.message);
         }
@@ -49,9 +50,9 @@ function OneAristPage() {
             <Header/>
             
             <div className="oneArtistPageArtistImgDiv">
-                <img className="oneArtistPageArtistImg" src={artist.artist_img}></img> 
+                <img className="oneArtistPageArtistImg" src={artist.artistImg}></img> 
             </div>
-            <h1>{artist.artist}</h1>
+            <h1>{artist.name}</h1>
             <h3 style={{textAlign:"center"}}>Albums</h3>
             <Carousel breakPoints={ breakPointsAlbums}>
                     {albums.map(album=>{
@@ -61,7 +62,7 @@ function OneAristPage() {
             <h3 style={{textAlign:"center"}}>Songs</h3>
             <Carousel breakPoints={breakPointsSongs}>
                     {songs.map(song=>{
-                        return <TopSong key={song.song_id} data={{...song,song_name:song.title}} displayFromHomePage={false}/>
+                        return <TopSong key={song.id} data={song} displayFromHomePage={false}/>
                     })}
                     
             </Carousel>

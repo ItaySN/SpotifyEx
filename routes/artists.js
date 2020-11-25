@@ -78,6 +78,16 @@ router.get('/songsByArtist/:id', async (req,res) => {
     }
 })
 
+router.get('/albumsByArtist/:id',async (req,res) =>{
+    try{
+        const id = req.params.id;
+        const albums = await Artists.albumsByArtist(Albums,id)
+        res.send(albums)
+    }catch(err){
+        res.status(500).send(err.message);
+    }
+})
+
 router.get('/:id', async (req, res) => {
     try {
         const artist = await Artists.findByPk(req.params.id);
